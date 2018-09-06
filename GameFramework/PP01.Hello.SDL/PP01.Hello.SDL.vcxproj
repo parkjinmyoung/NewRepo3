@@ -71,7 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>C:\Users\user\source\repos\NewRepo3\SDL2-2.0.8\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\user\Desktop\실습\SDL2-2.0.8\lib\x86;C:\Users\user\source\repos\NewRepo3\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\user\source\repos\NewRepo3\SDL2-2.0.8\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
