@@ -1,10 +1,8 @@
 #include "Game.h"
 #include <iostream>
 
-bool Game::init(const char* title, int xpos, int ypos,
-	int width, int height, bool fullscreen)
+bool Game::init(const char* title, int xpos, int ypos,int width, int height, bool fullscreen)
 {
-	
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
@@ -13,7 +11,8 @@ bool Game::init(const char* title, int xpos, int ypos,
 				m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
 	}
-	else {
+	else 
+	{
 			return false; // sdl could not initialize
 	}
 	return true;
@@ -23,8 +22,8 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 	SDL_RenderPresent(m_pRenderer);
-
-
+	
+	SDL_Delay(50000000);
 }
 
 
