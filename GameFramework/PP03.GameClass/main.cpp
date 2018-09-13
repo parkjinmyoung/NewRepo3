@@ -13,7 +13,9 @@ int main(int argc, char* argv[])
 		g_gmae->handleEvents();
 		g_gmae->update();
 		g_gmae->render();
+
 	}
+	
 	g_gmae->clean();
 	return 0;
 }
