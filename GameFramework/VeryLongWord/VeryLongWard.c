@@ -2,15 +2,17 @@
 
 void VeryLongWord(char * sen) {
 
-	char temp[]= sen;
-
+	char temp = sen;
+	char temp2[] = NULL;
+	char temp3[] = NULL;
 	int i = 0;
+	
 
-	while (temp[i] == NULL)
+	while (temp == NULL)
 	{
 		for (i = 0;temp[i] == " " ;i++)
 		{
-			char temp2 = 
+			
 		}
 	}
 

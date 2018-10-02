@@ -94,15 +94,3 @@ void Game::handleEvents()
 
 	}
 }
-
-/*
-SDL_Surface* pTempSurface = SDL_LoadBMP("Assets/rider.bmp");
-m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-
-SDL_FreeSurface(pTempSurface);
-
-SDL_QueryTexture(m_pTexture, NULL, NULL, &m_sourceRectangle.w, &m_sourceRectangle.h);*/
-
-
-
-/**/
