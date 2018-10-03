@@ -11,9 +11,9 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
-		
-		
-		Textureback();
+		back->Rendererin(m_pRenderer);
+		back->TextureLoad();
+
 		Texturetest();
 
 
@@ -40,7 +40,7 @@ void Game::update()
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
-	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_background, &m_destinback);
+	back->RenderCopy();
 	SDL_RenderCopy(m_pRenderer, m_pTexture2, &m_source, &m_destin);
 	SDL_RenderPresent(m_pRenderer);
 }

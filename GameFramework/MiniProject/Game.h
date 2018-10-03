@@ -1,11 +1,11 @@
 #pragma once
 #include "SDL.h"
-
+#include "texture.cpp"
 
 class Game
 {
 public:
-
+	
 	Game() {};
 	~Game() {};
 	bool init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen);
@@ -18,9 +18,14 @@ public:
 
 	void Textureback();
 	void Texturetest();
+
+	Background* back = new Background();
+	
 private:
+
+	SDL_Renderer * m_pRenderer;
 	SDL_Window * m_pWindow;
-	SDL_Renderer* m_pRenderer;
+	
 	SDL_Surface* pTempSurface;
 	SDL_Surface* pTempSurface2;
 	
