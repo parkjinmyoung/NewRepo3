@@ -16,10 +16,12 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		back->Rendererin(m_pRenderer);
 		textext->Rendererin(m_pRenderer);
-
+		
 		back->TextureLoad();
 		textext->TextureLoad();
 
+		back->setAnimation(640, 2);
+		textext->setAnimation(128, 6);
 
 
 
@@ -39,7 +41,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 void Game::update()
 {
-	textext->Animation(128, 6);
+	back->Animation();
+	textext->Animation();
 }
 
 void Game::render()
@@ -68,6 +71,8 @@ void Game::handleEvent()
 		case SDL_QUIT:
 			m_bRunning = false;
 			break;
+		case SDL_MOUSEBUTTONDOWN:
+
 		default:
 			break;
 		}

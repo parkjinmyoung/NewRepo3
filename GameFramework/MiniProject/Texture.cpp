@@ -32,8 +32,14 @@ public:
 	{
 		SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
 	}
-
-	void Animation(int  xs, int tik )
+	int  xs;
+	int tik;
+	void setAnimation(int xsize , int tikc)
+	{
+		xs = xsize;
+		tik = tikc;
+	}
+	void Animation()
 	{
 		m_sourceRectangle.x = xs * int(((SDL_GetTicks() / 100) % tik));
 	}
@@ -44,7 +50,7 @@ class Background : public Texturemanager
 public:
 	void TextureLoad()
 	{
-		pTempSurface = IMG_Load("assets/z.png");
+		pTempSurface = IMG_Load("Assets/king.png");
 		
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
@@ -66,7 +72,7 @@ class TextureTest : public Texturemanager
 public:
 	void TextureLoad()
 	{
-		pTempSurface = IMG_Load("assets/animate-alpha.png");
+		pTempSurface = IMG_Load("Assets/animate-alpha.png");
 
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
