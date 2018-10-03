@@ -28,7 +28,6 @@ private:
 
 	SDL_Texture* m_pTexture;
 	SDL_Texture* m_pTexture2;
-
 	SDL_Rect m_background;
 	SDL_Rect m_destinback;
 	
