@@ -1,88 +1,24 @@
 #pragma once
-#include "SDL.h"
-#include <SDL_image.h>
-
-class Texturemanager
+#include "Texture.h"
+void Texturemanager::Rendererin(SDL_Renderer * kkk)
 {
-public:
-	Texturemanager() {};
-	~Texturemanager() {};
+	m_pRenderer = kkk;
+}
 
-	
-	virtual void TextureLoad() = 0;
-	SDL_Renderer * m_pRenderer;
-
-
-	SDL_Surface* surface() { return pTempSurface; }
-	SDL_Texture* texture() { return m_pTexture; }
-
-
-	SDL_Surface* pTempSurface;
-	SDL_Texture* m_pTexture;
-
-
-	SDL_Rect m_sourceRectangle;
-	SDL_Rect m_destinationRectangle;
-
-	void Rendererin(SDL_Renderer * kkk)
-	{
-		m_pRenderer = kkk;
-	}
-	void RenderCopy()
-	{
-		SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
-	}
-	int  xs;
-	int tik;
-	void setAnimation(int xsize , int tikc)
-	{
-		xs = xsize;
-		tik = tikc;
-	}
-	void Animation()
-	{
-		m_sourceRectangle.x = xs * int(((SDL_GetTicks() / 100) % tik));
-	}
-};
-
-class Background : public Texturemanager
+void Texturemanager::RenderCopy()
 {
-public:
-	void TextureLoad()
-	{
-		pTempSurface = IMG_Load("Assets/a.png");
-		
-		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-		SDL_FreeSurface(pTempSurface);
+	SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
+}
 
-		m_sourceRectangle.w = 640;
-		m_sourceRectangle.h = 480;
 
-		m_destinationRectangle.x = m_sourceRectangle.x = 0;
-		m_destinationRectangle.y = m_sourceRectangle.y = 0;
-		m_destinationRectangle.w = m_sourceRectangle.w;
-		m_destinationRectangle.h = m_sourceRectangle.h;
-	}
-
-	
-};
-
-class TextureTest : public Texturemanager
+void Texturemanager::setAnimation(int xs, int tikc)
 {
-public:
-	void TextureLoad()
-	{
-		pTempSurface = IMG_Load("Assets/animate.png");
+	xsize = xs;
+	tik = tikc;
+}
 
-		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
-		SDL_FreeSurface(pTempSurface);
+void Texturemanager::Animation()
+{
+	m_sourceRectangle.x = xsize * int(((SDL_GetTicks() / 100) % tik));
+}
 
-		m_sourceRectangle.w = 128;
-		m_sourceRectangle.h = 82;
-
-		m_destinationRectangle.x = m_sourceRectangle.x = 0;
-		m_destinationRectangle.y = m_sourceRectangle.y = 0;
-		m_destinationRectangle.w = m_sourceRectangle.w;
-		m_destinationRectangle.h = m_sourceRectangle.h;
-	}
-};

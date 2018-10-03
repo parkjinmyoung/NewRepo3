@@ -19,7 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="Background2.h" />
+    <ClInclude Include="dog.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="Texturetext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />

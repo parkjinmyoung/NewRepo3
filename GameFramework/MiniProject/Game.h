@@ -1,7 +1,8 @@
 #pragma once
 #include "SDL.h"
-#include "texture.cpp"
-
+#include "Texture.h"
+#include "Texturetext.h"
+#include "Background.h"
 class Game
 {
 public:

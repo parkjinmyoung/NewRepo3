@@ -20,7 +20,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		back->TextureLoad();
 		textext->TextureLoad();
 
-		back->setAnimation(640, 1);
+		back->setAnimation(640, 2);
 		textext->setAnimation(128, 6);
 
 
@@ -72,11 +72,14 @@ void Game::handleEvent()
 			m_bRunning = false;
 			break;
 		case SDL_MOUSEBUTTONDOWN:
-
+			back->imagechange();
+			back->setAnimation(640, 1);
+			textext->imagechange();
+			textext->setAnimation(128, 6);
+			break;
 		default:
 			break;
 		}
 	}
 }
-
 
