@@ -20,7 +20,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		back->TextureLoad();
 		textext->TextureLoad();
 
-		back->setAnimation(640, 2);
+		back->setAnimation(640, 1);
 		textext->setAnimation(128, 6);
 
 

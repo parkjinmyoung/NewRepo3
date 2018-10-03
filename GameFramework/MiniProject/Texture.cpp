@@ -50,7 +50,7 @@ class Background : public Texturemanager
 public:
 	void TextureLoad()
 	{
-		pTempSurface = IMG_Load("Assets/king.png");
+		pTempSurface = IMG_Load("Assets/a.png");
 		
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
@@ -72,7 +72,7 @@ class TextureTest : public Texturemanager
 public:
 	void TextureLoad()
 	{
-		pTempSurface = IMG_Load("Assets/animate-alpha.png");
+		pTempSurface = IMG_Load("Assets/animate.png");
 
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
