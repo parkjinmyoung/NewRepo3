@@ -8,6 +8,7 @@ public:
 	Texturemanager() {};
 	~Texturemanager() {};
 
+	
 	virtual void TextureLoad() = 0;
 	SDL_Renderer * m_pRenderer;
 
@@ -31,6 +32,11 @@ public:
 	{
 		SDL_RenderCopy(m_pRenderer, m_pTexture, &m_sourceRectangle, &m_destinationRectangle);
 	}
+
+	void Animation(int  xs, int tik )
+	{
+		m_sourceRectangle.x = xs * int(((SDL_GetTicks() / 100) % tik));
+	}
 };
 
 class Background : public Texturemanager
@@ -39,7 +45,7 @@ public:
 	void TextureLoad()
 	{
 		pTempSurface = IMG_Load("assets/z.png");
-		SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
+		
 		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
 		SDL_FreeSurface(pTempSurface);
 
@@ -53,4 +59,24 @@ public:
 	}
 
 	
+};
+
+class TextureTest : public Texturemanager
+{
+public:
+	void TextureLoad()
+	{
+		pTempSurface = IMG_Load("assets/animate-alpha.png");
+
+		m_pTexture = SDL_CreateTextureFromSurface(m_pRenderer, pTempSurface);
+		SDL_FreeSurface(pTempSurface);
+
+		m_sourceRectangle.w = 128;
+		m_sourceRectangle.h = 82;
+
+		m_destinationRectangle.x = m_sourceRectangle.x = 0;
+		m_destinationRectangle.y = m_sourceRectangle.y = 0;
+		m_destinationRectangle.w = m_sourceRectangle.w;
+		m_destinationRectangle.h = m_sourceRectangle.h;
+	}
 };

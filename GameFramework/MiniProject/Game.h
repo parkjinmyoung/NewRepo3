@@ -16,10 +16,9 @@ public:
 	bool running() { return  m_bRunning; }
 
 
-	void Textureback();
-	void Texturetest();
 
 	Background* back = new Background();
+	TextureTest* textext = new TextureTest();
 	
 private:
 
