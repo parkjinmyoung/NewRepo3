@@ -20,6 +20,6 @@ private:
 
 	SDL_Texture* m_pTexture;
 	SDL_Rect m_background;
-	SDL_Rect m_destinationRectangle;
+	SDL_Rect m_destinback;
 
 };
