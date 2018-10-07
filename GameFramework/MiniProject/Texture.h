@@ -6,13 +6,16 @@ class Texturemanager
 {
 public:
 	Texturemanager() {};
+	Texturemanager(int x, int y);
 	~Texturemanager() {};
 
 	int xsize;
 	int ysize;
 	int tik;
 
-	char route;
+	int xpos = 0;
+	int ypos = 0;
+
 
 
 	Texturemanager * NEXT = NULL;
@@ -26,6 +29,7 @@ public:
 	
 	void setAnimation(int xsize, int tikc);
 	void Animation();
+	void move();
 	
 protected:
 

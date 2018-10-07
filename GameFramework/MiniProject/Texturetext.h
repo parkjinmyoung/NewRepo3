@@ -4,6 +4,9 @@
 class TextureTest : public Texturemanager
 {
 public:
+	TextureTest() {};
+
+	TextureTest(int x, int y) { xpos = x; ypos = y; }
 	void TextureLoad()
 	{
 		pTempSurface = IMG_Load("");
@@ -18,6 +21,11 @@ public:
 		m_destinationRectangle.y = m_sourceRectangle.y = 0;
 		m_destinationRectangle.w = m_sourceRectangle.w;
 		m_destinationRectangle.h = m_sourceRectangle.h;
+
+
+		m_destinationRectangle.x = xpos;
+		m_destinationRectangle.y = ypos;
+
 	}
 	void imagechange()
 	{

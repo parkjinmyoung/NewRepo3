@@ -20,7 +20,9 @@ public:
 
 	Background* back = new Background();
 	TextureTest* textext = new TextureTest();
-	
+	TextureTest* textext2 = new TextureTest(0 ,50);
+
+
 private:
 
 	SDL_Renderer * m_pRenderer;
