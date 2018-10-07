@@ -11,6 +11,10 @@ public:
 	int xsize;
 	int ysize;
 	int tik;
+
+	char route;
+
+
 	Texturemanager * NEXT = NULL;
 
 

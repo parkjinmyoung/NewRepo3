@@ -21,4 +21,3 @@ void Texturemanager::Animation()
 {
 	m_sourceRectangle.x = xsize * int(((SDL_GetTicks() / 100) % tik));
 }
-
