@@ -18,6 +18,7 @@ public:
 	bool running() { return m_bRunning; }
 
 	int m_currentFrame;
+	int m2_currentFrame;
 	//TextureManager m_textureManager;
 
 private:
