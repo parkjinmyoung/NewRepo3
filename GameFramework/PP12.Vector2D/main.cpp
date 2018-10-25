@@ -1,8 +1,8 @@
 #include "Game.h"
 
 //Game* g_gmae = 0;
-const int FPS = 60;
-const int DELAY_TIME = 1000.0f / FPS;
+const float FPS = 60.0f;
+const float DELAY_TIME = 1000.0f / FPS;
 Uint32 frameStart, frameTime;
 
 int main(int argc, char* argv[])
