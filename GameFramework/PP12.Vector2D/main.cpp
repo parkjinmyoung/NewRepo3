@@ -1,7 +1,9 @@
 #include "Game.h"
 
 //Game* g_gmae = 0;
-
+const int FPS = 60;
+const int DELAY_TIME = 1000.0f / FPS;
+Uint32 frameStart, frameTime;
 
 int main(int argc, char* argv[])
 {
@@ -11,11 +13,18 @@ int main(int argc, char* argv[])
 		std::cout << "game init success!\n";
 		while (TheGame::Instance()->running())
 		{
+			frameStart = SDL_GetTicks();
 			TheGame::Instance()->handleEvents();
 			TheGame::Instance()->update();
 			TheGame::Instance()->render();
-			SDL_Delay(10);
+			frameTime = SDL_GetTicks() - frameStart;
+
+			if (frameTime < DELAY_TIME)
+			{
+				SDL_Delay((int)(DELAY_TIME - frameTime));
+			}
 		}
+
 	}
 	//thegame인스턴스실패
 	else {
