@@ -54,7 +54,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			return false;
 		}
 
-		
+		TheInputHandler::Instance()->instaliseJoystick();
+
 		/*SDL_Surface* pTempSurface = IMG_Load("assets/animate-alpha.png");
 
 
@@ -126,26 +127,11 @@ void Game::render()
 
 void Game::clean()
 {
-	std::cout << "cleaning game\n";
-	SDL_DestroyWindow(m_pWindow);
-	SDL_DestroyRenderer(m_pRenderer);
-	SDL_Quit();
+	TheInputHandler::Instance()->clean();
 }
 
 
 void Game::handleEvents()
 {
-	SDL_Event event;
-	if (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			m_bRunning = false;
-			break;
-		default:
-			break;
-		}
-
-	}
+	TheInputHandler::Instance()->Update();
 }

@@ -2,6 +2,7 @@
 
 Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
+	
 }
 void Player::draw()
 {
@@ -16,3 +17,5 @@ void Player::update()
 //void Player::clean()
 //{
 //}
+
+
