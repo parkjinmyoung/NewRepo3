@@ -1,12 +1,16 @@
 #include "Game.h"
 
 //Game* g_gmae = 0;
+
 const float FPS = 60.0f;
 const float DELAY_TIME = 1000.0f / FPS;
 Uint32 frameStart, frameTime;
 
+
 int main(int argc, char* argv[])
 {
+
+
 	std::cout << "game init attempt...\n";
 	if (TheGame::Instance()->init("Chapter 12", 100, 100, 640, 480, false))
 	{
