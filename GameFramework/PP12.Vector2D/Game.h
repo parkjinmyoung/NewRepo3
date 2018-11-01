@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include <vector>
-
+#include "InputHandler.h"
 
 class Game
 {
@@ -41,20 +41,21 @@ public:
 	//GameObject* m_enemy;
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
+	SDL_Window* getWinodw() const { return m_pWindow; }
 
+	bool m_bRunning;
 	
 
 private:
 	static Game* s_pInstance;
 
 
-
-
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
+
 	
 
-	bool m_bRunning;
+	
 
 	//SDL_Texture* m_pTexture;
 	//SDL_Rect m_sourceRectangle;
