@@ -9,7 +9,6 @@ class InputHandler
 public:
 	static InputHandler* Instance()
 	{
-		std::cout << "inputhandler init success!\n";
 		if (s_pInstance == 0)
 		{
 			s_pInstance = new InputHandler();
