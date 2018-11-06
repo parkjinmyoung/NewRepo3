@@ -1,11 +1,15 @@
 #include "Newbullet.h"
+#include "Game.h"
 
 Newbullet::Newbullet(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
 }
 void Newbullet::draw()
 {
-	SDLGameObject::draw(); // we now use SDLGameObject
+	TextureManager::Instance()->draw(m_textureID,
+		(int)m_position.getX(), (int)m_position.getY(),
+		m_width, m_height,
+		TheGame::Instance()->getRenderer());
 }
 void Newbullet::update()
 {

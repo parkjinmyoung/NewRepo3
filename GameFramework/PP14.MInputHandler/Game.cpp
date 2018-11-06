@@ -33,7 +33,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			return false;
 		}
-		if (!TheTextureManager::Instance()->load("Assets/bullet1.png",
+		if (!TheTextureManager::Instance()->load("assets/bullet1.png",
 			"bullet", m_pRenderer))
 		{
 			return false;
@@ -45,8 +45,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
 		m_gameObjects.push_back
 		(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
-		m_gameObjects.push_back
-		(new Newbullet(new LoaderParams(200, 200, 128, 82, "animate")));
 
 
 		std::cout << "init init success!\n";

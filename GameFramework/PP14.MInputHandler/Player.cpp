@@ -21,8 +21,8 @@ void Player::handleInput()
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 	{
 		//»ý¼º
-		TheGame().m_gameObjects.push_back(new Newbullet(new LoaderParams(20 , 20, 128, 82, "animate")));
-		cout << 1;
+		TheGame::Instance()->m_gameObjects.push_back
+		(new Newbullet(new LoaderParams(m_position.getX()+100, m_position.getY(), 64, 64, "bullet")));
 		
 	}
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();

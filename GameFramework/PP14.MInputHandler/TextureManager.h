@@ -36,7 +36,7 @@ public:
 
 	void draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
-	void DrawFrame(string id, int x, int y, int width, int height, int currentRow, int currentFrame,
+	void drawFrame(string id, int x, int y, int width, int height, int currentRow, int currentFrame,
 		SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 };
 
