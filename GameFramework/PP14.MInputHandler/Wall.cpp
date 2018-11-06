@@ -20,8 +20,3 @@ void Wall::clean()
 {
 	m_textureID = "creck";
 }
-
-void Wall::Crack()
-{
-	
-}
