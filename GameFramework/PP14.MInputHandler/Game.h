@@ -8,6 +8,7 @@
 #include "InputHandler.h"
 #include "Newbullet.h"
 #include "Wall.h"
+#include "Nullobject.h"
 class Game
 {
 public:

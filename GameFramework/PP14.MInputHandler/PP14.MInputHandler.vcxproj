@@ -159,6 +159,7 @@
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="Newbullet.h" />
+    <ClInclude Include="Nullobject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SDLGameObject.h" />
     <ClInclude Include="TextureManager.h" />

@@ -20,9 +20,13 @@ void Player::handleInput()
 	}
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 	{
+		
+		
+		//번호
+		n++;
 		//생성
 		TheGame::Instance()->m_gameObjects.push_back
-		(new Newbullet(new LoaderParams(m_position.getX()+100, m_position.getY(), 64, 64, "bullet")));
+		(new Newbullet(new LoaderParams(m_position.getX()+100, m_position.getY(), 64, 64, "bullet"), n));
 		
 	}
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();

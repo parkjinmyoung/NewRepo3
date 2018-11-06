@@ -2,6 +2,8 @@
 
 Wall::Wall(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
+	
+
 }
 void Wall::draw()
 {
@@ -16,6 +18,10 @@ void Wall::update()
 }
 void Wall::clean()
 {
-
+	m_textureID = "creck";
 }
 
+void Wall::Crack()
+{
+	
+}

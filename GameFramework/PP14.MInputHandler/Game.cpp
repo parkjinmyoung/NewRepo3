@@ -41,6 +41,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			"nemo", m_pRenderer))
 		{
 			return false;
+		}if (!TheTextureManager::Instance()->load("assets/creck.png",
+			"creck", m_pRenderer))
+		{
+			return false;
 		}
 		
 
@@ -54,6 +58,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		m_gameObjects.push_back
 		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo")));
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+
 		
 
 		std::cout << "init init success!\n";

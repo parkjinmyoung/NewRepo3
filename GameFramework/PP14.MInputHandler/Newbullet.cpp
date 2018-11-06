@@ -1,8 +1,9 @@
 #include "Newbullet.h"
 
 
-Newbullet::Newbullet(const LoaderParams* pParams) : SDLGameObject(pParams)
+Newbullet::Newbullet(const LoaderParams* pParams ,int n) : SDLGameObject(pParams)
 {
+	this->n = n;
 }
 Newbullet::~Newbullet()
 {
@@ -32,6 +33,7 @@ void Newbullet::collwall(GameObject* wall)
 		(int)this->getY()+ 64 > (int)wall->getY() && 
 		(int)this->getY()  < (int)wall->getY() + 130)
 	{
-		this->clean();
+		TheGame::Instance()->m_gameObjects[n] = new Nullobject(new LoaderParams(NULL, NULL, NULL, NULL, ""));
+		wall->clean();
 	}
 }
