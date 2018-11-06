@@ -7,7 +7,7 @@
 #include <vector>
 #include "InputHandler.h"
 #include "Newbullet.h"
-
+#include "Wall.h"
 class Game
 {
 public:
