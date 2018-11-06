@@ -12,6 +12,8 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	virtual float getX() { return m_position.getX();}
+	virtual float getY() { return m_position.getY();}
 protected:
 	Vector2D m_position;
 	Vector2D m_velocity;

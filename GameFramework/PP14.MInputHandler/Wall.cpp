@@ -1,5 +1,4 @@
 #include "Wall.h"
-#include "Game.h"
 
 Wall::Wall(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
@@ -13,9 +12,10 @@ void Wall::draw()
 }
 void Wall::update()
 {
-	
+
 }
 void Wall::clean()
 {
 
 }
+

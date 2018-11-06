@@ -1,8 +1,12 @@
 #include "Newbullet.h"
-#include "Game.h"
+
 
 Newbullet::Newbullet(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
+}
+Newbullet::~Newbullet()
+{
+
 }
 void Newbullet::draw()
 {
@@ -14,8 +18,20 @@ void Newbullet::draw()
 void Newbullet::update()
 {
 	m_position.setX(m_position.getX() + 1);
+	collwall(TheGame::Instance()->m_gameObjects.at(2));
 }
 void Newbullet::clean()
 {
+	
+}
 
+void Newbullet::collwall(GameObject* wall)
+{
+	if ((int)this->getX()+ 64 > (int)wall->getX() &&
+		(int)this->getX() < (int)wall->getX() +130 &&
+		(int)this->getY()+ 64 > (int)wall->getY() && 
+		(int)this->getY()  < (int)wall->getY() + 130)
+	{
+		this->clean();
+	}
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include "SDLGameObject.h"
+#include "Game.h"
 
 
 class Wall : public SDLGameObject
@@ -9,4 +10,5 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	
 };
