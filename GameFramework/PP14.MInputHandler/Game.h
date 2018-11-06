@@ -6,6 +6,7 @@
 #include "Enemy.h"
 #include <vector>
 #include "InputHandler.h"
+#include "Newbullet.h"
 
 class Game
 {

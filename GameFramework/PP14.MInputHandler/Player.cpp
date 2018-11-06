@@ -1,6 +1,5 @@
 #include "Player.h"
 
-
 void Player::handleInput()
 {
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RIGHT))
@@ -21,7 +20,10 @@ void Player::handleInput()
 	}
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 	{
-		m_velocity.setX(1);
+		//»ý¼º
+		TheGame().m_gameObjects.push_back(new Newbullet(new LoaderParams(20 , 20, 128, 82, "animate")));
+		cout << 1;
+		
 	}
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
 	m_velocity = (*vec - m_position) / 100;
