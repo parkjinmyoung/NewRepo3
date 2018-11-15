@@ -14,6 +14,7 @@ private:
 	TextureManager() {}
 	~TextureManager() {}
 	static TextureManager* s_pInstance;
+
 public:
 
 

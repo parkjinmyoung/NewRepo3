@@ -3,7 +3,6 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
-#include "Enemy.h"
 #include <vector>
 #include "InputHandler.h"
 #include "Newbullet.h"
@@ -32,7 +31,7 @@ public:
 	void clean();
 	void quit();
 
-	std::vector<GameObject*> m_gameObjects;
+	std::vector<SDLGameObject*> m_gameObjects;
 
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }

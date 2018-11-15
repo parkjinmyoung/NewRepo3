@@ -23,10 +23,10 @@ void Player::handleInput()
 		
 		
 		//번호
-		n++;
+		//n++;
 		//생성
-		TheGame::Instance()->m_gameObjects.push_back
-		(new Newbullet(new LoaderParams(m_position.getX()+100, m_position.getY(), 64, 64, "bullet"), n));
+		//TheGame::Instance()->m_gameObjects.push_back
+		//(new Newbullet(new LoaderParams(m_position.getX()+100, m_position.getY(), 64, 64, "bullet"), n));
 		
 	}
 	Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
@@ -39,10 +39,12 @@ Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
 {
 	
 }
+
 void Player::draw()
 {
 	SDLGameObject::draw(); // we now use SDLGameObject
 }
+
 void Player::update()
 {
 	m_velocity.setX(0);
