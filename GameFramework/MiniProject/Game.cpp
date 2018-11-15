@@ -2,84 +2,119 @@
 #include <iostream>
 #include <SDL_image.h>
 
+Game* Game::s_pInstance = 0;
+
+
+
+
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen)
 {
+
 	if (SDL_Init(SDL_INIT_EVERYTHING) >= 0)
 	{
+
+
+
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, fullscreen);
 		if (m_pWindow != 0)
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
-
-		SDL_SetRenderDrawColor(m_pRenderer, 0, 0, 0, 255);
-
-		back->Rendererin(m_pRenderer);
-		textext->Rendererin(m_pRenderer);
+		//SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 		
-		back->TextureLoad();
-		textext->TextureLoad();
+	
+		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png",
+			"animate", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/Tree.png",
+			"tree", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/bullet1.png",
+			"bullet", m_pRenderer))
+		{
+			return false;
+		}if (!TheTextureManager::Instance()->load("assets/nemo.png",
+			"nemo", m_pRenderer))
+		{
+			return false;
+		}if (!TheTextureManager::Instance()->load("assets/creck.png",
+			"creck", m_pRenderer))
+		{
+			return false;
+		}
+		
 
-		back->setAnimation(640, 2);
-		textext->setAnimation(128, 6);
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+		m_gameObjects.push_back
+		(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+		m_gameObjects.push_back
+		(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+		m_gameObjects.push_back
+		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo")));
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 
+		
 
-
+		std::cout << "init init success!\n";
+		
 		m_bRunning = true;
-	
-	
-		
 	}
 	else
 	{
 		return false;
 	}
-	
+
+
+
 	return true;
 }
 
 
+
 void Game::update()
 {
-	back->Animation();
-	textext->Animation();
+	for (std::vector<GameObject*>::size_type i = 0;
+	i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->update();
+	}
+
 }
+
+
 
 void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
-	back->RenderCopy();
-	textext->RenderCopy();
+	for (std::vector<GameObject*>::size_type i = 0;
+		i != m_gameObjects.size(); i++)
+	{
+		m_gameObjects[i]->draw();
+	}
+
 	SDL_RenderPresent(m_pRenderer);
+
 }
+
 
 void Game::clean()
 {
-	std::cout << "cleaning game\n";
-	SDL_DestroyWindow(m_pWindow);
-	SDL_DestroyRenderer(m_pRenderer);
-	SDL_Quit();
+	TheInputHandler::Instance()->clean();
 }
 
-void Game::handleEvent()
+
+void Game::handleEvents()
 {
-	SDL_Event event;
-	if (SDL_PollEvent(&event))
-	{
-		switch (event.type)
-		{
-		case SDL_QUIT:
-			m_bRunning = false;
-			break;
-		case SDL_MOUSEBUTTONDOWN:
-			back->imagechange();
-			back->setAnimation(640, 1);
-			textext->imagechange();
-			textext->setAnimation(128, 6);
-			break;
-		default:
-			break;
-		}
-	}
+	TheInputHandler::Instance()->Update();
 }
 
+void Game::quit()
+{
+	m_bRunning = false;
+}
