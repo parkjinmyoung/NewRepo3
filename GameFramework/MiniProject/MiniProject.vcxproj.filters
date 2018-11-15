@@ -27,9 +27,6 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Newbullet.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -40,6 +37,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Wall.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Newbullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
