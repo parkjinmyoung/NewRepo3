@@ -28,6 +28,31 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			return false;
 		}
+		if (!TheTextureManager::Instance()->load("assets/front.png",
+			"player", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go front.png",
+			"playerfront", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go right.png",
+			"playerright", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go left.png",
+			"playerleft", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go back.png",
+			"playerback", m_pRenderer))
+		{
+			return false;
+		}
 		if (!TheTextureManager::Instance()->load("assets/Tree.png",
 			"tree", m_pRenderer))
 		{
@@ -49,7 +74,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 
 		m_gameObjects.push_back
-		(new Player(new LoaderParams(100, 100, 128, 82, "animate") , GameObjectsOrder++));
+		(new Player(new LoaderParams(100, 100, 128, 82, "player") , GameObjectsOrder++));
 		
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 		

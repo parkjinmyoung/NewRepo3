@@ -1,9 +1,11 @@
 #include "Newbullet.h"
 
 
-Newbullet::Newbullet(const LoaderParams* pParams, int n) : SDLGameObject(pParams , n)
+Newbullet::Newbullet(const LoaderParams* pParams, int n, int x, int y) : SDLGameObject(pParams , n)
 {
 	this->n = n;
+	xvelo = x;
+	yvelo = y;
 }
 Newbullet::~Newbullet()
 {
@@ -18,14 +20,25 @@ void Newbullet::draw()
 }
 void Newbullet::update()
 {
-	m_position.setX(m_position.getX() + 1);
-
-	
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != TheGame::Instance()->m_WallObjects.size(); i++)
+	if ((int)this->getX() > 700 ||
+		(int)this->getX() < -100 ||
+		(int)this->getY() < -100 ||
+		(int)this->getY() > 600)
 	{
-		collwall(TheGame::Instance()->m_WallObjects[i]);
+		GameObjectDelete();
 	}
+	m_velocity.setX(xvelo);
+	m_velocity.setY(yvelo);
+
+	for (std::vector<GameObject*>::size_type i = 0;
+		i != TheGame::Instance()->m_gameObjects.size(); i++)
+	{
+		if (TheGame::Instance()->m_gameObjects[i]->Tag == "WALL")
+		{
+			collwall(TheGame::Instance()->m_gameObjects[i]);
+		}
+	}
+	SDLGameObject::update();
 }
 
 void Newbullet::clean()
