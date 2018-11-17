@@ -1,7 +1,7 @@
 #include "Newbullet.h"
 
 
-Newbullet::Newbullet(const LoaderParams* pParams, int n) : SDLGameObject(pParams)
+Newbullet::Newbullet(const LoaderParams* pParams, int n) : SDLGameObject(pParams , n)
 {
 	this->n = n;
 }
@@ -19,21 +19,28 @@ void Newbullet::draw()
 void Newbullet::update()
 {
 	m_position.setX(m_position.getX() + 1);
-	collwall(TheGame::Instance()->m_gameObjects.at(2));
+
+	
+	for (std::vector<GameObject*>::size_type i = 0;
+		i != TheGame::Instance()->m_WallObjects.size(); i++)
+	{
+		collwall(TheGame::Instance()->m_WallObjects[i]);
+	}
 }
+
 void Newbullet::clean()
 {
 
 }
 
-void Newbullet::collwall(GameObject* wall)
+void Newbullet::collwall(SDLGameObject* wall)
 {
 	if ((int)this->getX() + 64 > (int)wall->getX() &&
 		(int)this->getX() < (int)wall->getX() + 130 &&
 		(int)this->getY() + 64 > (int)wall->getY() &&
 		(int)this->getY() < (int)wall->getY() + 130)
 	{
-		TheGame::Instance()->m_gameObjects[n] = new Nullobject(new LoaderParams(NULL, NULL, NULL, NULL, ""));
+		GameObjectDelete();
 		wall->clean();
 	}
 }

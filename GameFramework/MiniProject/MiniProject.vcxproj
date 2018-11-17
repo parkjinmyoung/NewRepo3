@@ -22,11 +22,15 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Newbullet.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SLDGameObject.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Newbullet.h" />
+    <ClInclude Include="Nullobject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Game.h" />
@@ -35,6 +39,7 @@
     <ClInclude Include="LoaderParams.h" />
     <ClInclude Include="SDLGameObject.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -112,7 +117,7 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

@@ -49,9 +49,16 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 
 		m_gameObjects.push_back
-		(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+		(new Player(new LoaderParams(100, 100, 128, 82, "animate") , GameObjectsOrder++));
+		
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 		
+		m_gameObjects.push_back
+		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo") , GameObjectsOrder++));
+		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[1]);
+
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+
 
 		std::cout << "init init success!\n";
 		

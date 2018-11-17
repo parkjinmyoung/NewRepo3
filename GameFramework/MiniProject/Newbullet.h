@@ -13,5 +13,5 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
-	void collwall(GameObject* wall);
+	void collwall(SDLGameObject* wall);
 };
