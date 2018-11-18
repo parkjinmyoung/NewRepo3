@@ -9,6 +9,7 @@
 #include "Wall.h"
 #include "Nullobject.h"
 #include "Enemy.h"
+#include "EnemyCtrl.h"
 class Game
 {
 public:

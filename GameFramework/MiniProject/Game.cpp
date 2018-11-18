@@ -20,7 +20,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
-		//SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+		SDL_SetRenderDrawColor(m_pRenderer, 100, 200, 20, 255);
 		
 #pragma region Textureload
 
@@ -87,13 +87,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 		
 
-		m_gameObjects.push_back
-		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo") , GameObjectsOrder));
-		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[GameObjectsOrder++]);
-
+		
 
 		m_gameObjects.push_back
-		(new Enemy(new LoaderParams(300, 200, 128, 82, "ghost"), GameObjectsOrder));
+		(new EnemyCtrl(new LoaderParams(400, 200, 1, 1, ""), GameObjectsOrder));
 		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[GameObjectsOrder++]);
 
 

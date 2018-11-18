@@ -37,6 +37,10 @@ void Newbullet::update()
 		{
 			collwall(TheGame::Instance()->m_WallObjects[i]);
 		}
+		if (TheGame::Instance()->m_WallObjects[i]->Tag == "GHOST")
+		{
+			collghost(TheGame::Instance()->m_WallObjects[i]);
+		}
 	}
 	SDLGameObject::update();
 }
@@ -52,6 +56,18 @@ void Newbullet::collwall(SDLGameObject* wall)
 		(int)this->getX() < (int)wall->getX() + 130 &&
 		(int)this->getY() + 64 > (int)wall->getY() &&
 		(int)this->getY() < (int)wall->getY() + 130)
+	{
+		GameObjectDelete();
+		wall->clean();
+	}
+}
+
+void Newbullet::collghost(SDLGameObject* wall)
+{
+	if ((int)this->getX() + 64 > (int)wall->getX() &&
+		(int)this->getX() < (int)wall->getX() + 128 &&
+		(int)this->getY() + 64 > (int)wall->getY() &&
+		(int)this->getY() < (int)wall->getY() + 82)
 	{
 		GameObjectDelete();
 		wall->clean();
