@@ -42,6 +42,7 @@ public:
 	SDL_Window* getWinodw() const { return m_pWindow; }
 
 
+	bool m_bRunning;
 
 	
 	bool running() { return m_bRunning; }
@@ -54,8 +55,7 @@ private:
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 
-	bool m_bRunning;
-
+	
 
 
 };

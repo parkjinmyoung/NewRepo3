@@ -81,13 +81,14 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 #pragma endregion
 
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 		m_gameObjects.push_back
 		(new Player(new LoaderParams(100, 100, 128, 82, "player") , GameObjectsOrder++));
 		
-		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+		
 		
 
-		
+		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 
 		m_gameObjects.push_back
 		(new EnemyCtrl(new LoaderParams(400, 200, 1, 1, ""), GameObjectsOrder));
@@ -95,7 +96,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 
 
-		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+		
 
 
 		std::cout << "init init success!\n";

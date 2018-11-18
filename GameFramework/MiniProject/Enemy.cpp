@@ -11,6 +11,8 @@ void Enemy::draw()
 }
 void Enemy::update()
 {
+	collplayer(TheGame::Instance()->m_gameObjects[0]);
+
 	m_position.setY(m_position.getY() + speed);
 	if (m_position.getY() <= 0 || m_position.getY() + 82 >= 480 )
 	{
@@ -25,3 +27,13 @@ void Enemy::clean()
 	GameObjectDelete();
 }
 
+void Enemy::collplayer(SDLGameObject* player)
+{
+	if ((int)this->getX() + 64 > (int)player->getX() &&
+		(int)this->getX() < (int)player->getX() + 64 &&
+		(int)this->getY() + 82 > (int)player->getY() &&
+		(int)this->getY() < (int)player->getY() + 82)
+	{
+		player->clean();
+	}
+}
