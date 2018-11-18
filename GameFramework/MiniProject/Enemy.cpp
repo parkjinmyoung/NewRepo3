@@ -29,10 +29,10 @@ void Enemy::clean()
 
 void Enemy::collplayer(SDLGameObject* player)
 {
-	if ((int)this->getX() + 64 > (int)player->getX() &&
-		(int)this->getX() < (int)player->getX() + 64 &&
-		(int)this->getY() + 82 > (int)player->getY() &&
-		(int)this->getY() < (int)player->getY() + 82)
+	if ((int)this->getX() + 40 > (int)player->getX() &&
+		(int)this->getX() < (int)player->getX() + 40 &&
+		(int)this->getY() + 41 > (int)player->getY() &&
+		(int)this->getY() < (int)player->getY() + 41)
 	{
 		player->clean();
 	}
