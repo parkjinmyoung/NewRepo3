@@ -22,7 +22,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 		//SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 		
-	
+#pragma region Textureload
+
+
+
 		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png",
 			"animate", m_pRenderer))
 		{
@@ -70,17 +73,30 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			"creck", m_pRenderer))
 		{
 			return false;
+		}if (!TheTextureManager::Instance()->load("assets/ghost.png",
+			"ghost", m_pRenderer))
+		{
+			return false;
 		}
 		
+#pragma endregion
 
 		m_gameObjects.push_back
 		(new Player(new LoaderParams(100, 100, 128, 82, "player") , GameObjectsOrder++));
 		
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 		
+
 		m_gameObjects.push_back
-		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo") , GameObjectsOrder++));
-		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[1]);
+		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo") , GameObjectsOrder));
+		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[GameObjectsOrder++]);
+
+
+		m_gameObjects.push_back
+		(new Enemy(new LoaderParams(300, 200, 128, 82, "ghost"), GameObjectsOrder));
+		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[GameObjectsOrder++]);
+
+
 
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 

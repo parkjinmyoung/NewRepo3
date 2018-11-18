@@ -26,7 +26,6 @@ void Player::handleInput()
 	}
 
 
-	//if (TheInputHandler::Instance()->)
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 	{
 		//shoot
@@ -81,9 +80,6 @@ void Player::handleInput()
 		}
 		
 	}
-
-	//Vector2D* vec = TheInputHandler::Instance()->getMousePosition();
-	//m_velocity = (*vec - m_position) / 100;
 
 }
 

@@ -31,7 +31,7 @@ public:
 	void Update();
 	void clean();	
 	bool isKeyDown(SDL_Scancode key);
-	bool isKeyUp(SDL_Scancode key);
+//	bool isKeyUp(SDL_Scancode key);
 	bool getMouseButtonState(int buttonNumber);
 	Vector2D* getMousePosition();
 

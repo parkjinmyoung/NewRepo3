@@ -30,12 +30,12 @@ void Newbullet::update()
 	m_velocity.setX(xvelo);
 	m_velocity.setY(yvelo);
 
-	for (std::vector<GameObject*>::size_type i = 0;
-		i != TheGame::Instance()->m_gameObjects.size(); i++)
+	for (std::vector<SDLGameObject*>::size_type i = 0;
+		i != TheGame::Instance()->m_WallObjects.size(); i++)
 	{
-		if (TheGame::Instance()->m_gameObjects[i]->Tag == "WALL")
+		if (TheGame::Instance()->m_WallObjects[i]->Tag == "WALL")
 		{
-			collwall(TheGame::Instance()->m_gameObjects[i]);
+			collwall(TheGame::Instance()->m_WallObjects[i]);
 		}
 	}
 	SDLGameObject::update();
