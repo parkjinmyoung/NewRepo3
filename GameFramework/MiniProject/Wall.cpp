@@ -1,8 +1,8 @@
 #include "Wall.h"
 
-Wall::Wall(const LoaderParams* pParams) : SDLGameObject(pParams)
+Wall::Wall(const LoaderParams* pParams, int n) : SDLGameObject(pParams, n)
 {
-	
+	Tag = "WALL";
 
 }
 void Wall::draw()

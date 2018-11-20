@@ -8,11 +8,14 @@ class Player : public SDLGameObject
 private:
 	void handleInput();
 
-	int n = 2;
+	float waitshoot ;
+	float shoottime = 600.0f;
 public:
-	Player(const LoaderParams* pParams);
+	Player(const LoaderParams* pParams, int n);
+
+
 	virtual void draw();
 	virtual void update();
-	//virtual void clean();
-	
+	virtual void clean();
+
 };

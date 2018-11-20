@@ -6,12 +6,15 @@ class Newbullet : public SDLGameObject
 {
 private:
 	int n;
+	int xvelo;
+	int yvelo;
 public:
 	
-	Newbullet(const LoaderParams* pParams, int n);
+	Newbullet(const LoaderParams* pParams, int n,int x ,int y);
 	~Newbullet();
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
-	void collwall(GameObject* wall);
+	void collwall(SDLGameObject* wall);
+	void collghost(SDLGameObject* wall);
 };

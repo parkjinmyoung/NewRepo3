@@ -20,11 +20,39 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		{
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 		}
-		//SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
+		SDL_SetRenderDrawColor(m_pRenderer, 100, 200, 20, 255);
 		
-	
+#pragma region Textureload
+
+
+
 		if (!TheTextureManager::Instance()->load("assets/animate-alpha.png",
 			"animate", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/front.png",
+			"player", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go front.png",
+			"playerfront", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go right.png",
+			"playerright", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go left.png",
+			"playerleft", m_pRenderer))
+		{
+			return false;
+		}
+		if (!TheTextureManager::Instance()->load("assets/go back.png",
+			"playerback", m_pRenderer))
 		{
 			return false;
 		}
@@ -45,21 +73,31 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			"creck", m_pRenderer))
 		{
 			return false;
+		}if (!TheTextureManager::Instance()->load("assets/ghost.png",
+			"ghost", m_pRenderer))
+		{
+			return false;
 		}
 		
+#pragma endregion
 
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
 		m_gameObjects.push_back
-		(new Player(new LoaderParams(100, 100, 128, 82, "animate")));
+		(new Player(new LoaderParams(100, 100, 128, 82, "player") , GameObjectsOrder++));
+		
+		
+		
+
 		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+
 		m_gameObjects.push_back
-		(new Enemy(new LoaderParams(300, 300, 128, 82, "animate")));
-		cout << TheGame::Instance()->m_gameObjects.size() << endl;
-		m_gameObjects.push_back
-		(new Wall(new LoaderParams(500, 100, 130, 130, "nemo")));
-		cout << TheGame::Instance()->m_gameObjects.size() << endl;
+		(new EnemyCtrl(new LoaderParams(400, 200, 1, 1, ""), GameObjectsOrder));
+		m_WallObjects.push_back(TheGame::Instance()->m_gameObjects[GameObjectsOrder++]);
+
+
 
 		
+
 
 		std::cout << "init init success!\n";
 		

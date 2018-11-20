@@ -3,12 +3,13 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
-#include "Enemy.h"
 #include <vector>
 #include "InputHandler.h"
 #include "Newbullet.h"
 #include "Wall.h"
 #include "Nullobject.h"
+#include "Enemy.h"
+#include "EnemyCtrl.h"
 class Game
 {
 public:
@@ -32,13 +33,16 @@ public:
 	void clean();
 	void quit();
 
-	std::vector<GameObject*> m_gameObjects;
+	std::vector<SDLGameObject*> m_gameObjects;
 
+	std::vector<SDLGameObject*> m_WallObjects;
+	int GameObjectsOrder = 0;
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 	SDL_Window* getWinodw() const { return m_pWindow; }
 
 
+	bool m_bRunning;
 
 	
 	bool running() { return m_bRunning; }
@@ -51,14 +55,9 @@ private:
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
 
-	bool m_bRunning;
-
-
 	
 
-	//SDL_Texture* m_pTexture;
-	//SDL_Rect m_sourceRectangle;
-	//SDL_Rect m_destinationRectangle;
+
 };
 
 typedef Game TheGame;

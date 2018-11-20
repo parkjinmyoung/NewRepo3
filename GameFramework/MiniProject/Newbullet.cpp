@@ -1,9 +1,11 @@
 #include "Newbullet.h"
 
 
-Newbullet::Newbullet(const LoaderParams* pParams, int n) : SDLGameObject(pParams)
+Newbullet::Newbullet(const LoaderParams* pParams, int n, int x, int y) : SDLGameObject(pParams , n)
 {
 	this->n = n;
+	xvelo = x;
+	yvelo = y;
 }
 Newbullet::~Newbullet()
 {
@@ -18,22 +20,56 @@ void Newbullet::draw()
 }
 void Newbullet::update()
 {
-	m_position.setX(m_position.getX() + 1);
-	collwall(TheGame::Instance()->m_gameObjects.at(2));
+	if ((int)this->getX() > 700 ||
+		(int)this->getX() < -100 ||
+		(int)this->getY() < -100 ||
+		(int)this->getY() > 600)
+	{
+		GameObjectDelete();
+	}
+	m_velocity.setX(xvelo);
+	m_velocity.setY(yvelo);
+
+	for (std::vector<SDLGameObject*>::size_type i = 0;
+		i != TheGame::Instance()->m_WallObjects.size(); i++)
+	{
+		if (TheGame::Instance()->m_WallObjects[i]->Tag == "WALL")
+		{
+			collwall(TheGame::Instance()->m_WallObjects[i]);
+		}
+		if (TheGame::Instance()->m_WallObjects[i]->Tag == "GHOST")
+		{
+			collghost(TheGame::Instance()->m_WallObjects[i]);
+		}
+	}
+	SDLGameObject::update();
 }
+
 void Newbullet::clean()
 {
 
 }
 
-void Newbullet::collwall(GameObject* wall)
+void Newbullet::collwall(SDLGameObject* wall)
 {
 	if ((int)this->getX() + 64 > (int)wall->getX() &&
 		(int)this->getX() < (int)wall->getX() + 130 &&
 		(int)this->getY() + 64 > (int)wall->getY() &&
 		(int)this->getY() < (int)wall->getY() + 130)
 	{
-		TheGame::Instance()->m_gameObjects[n] = new Nullobject(new LoaderParams(NULL, NULL, NULL, NULL, ""));
+		GameObjectDelete();
+		wall->clean();
+	}
+}
+
+void Newbullet::collghost(SDLGameObject* wall)
+{
+	if ((int)this->getX() + 64 > (int)wall->getX() &&
+		(int)this->getX() < (int)wall->getX() + 128 &&
+		(int)this->getY() + 64 > (int)wall->getY() &&
+		(int)this->getY() < (int)wall->getY() + 82)
+	{
+		GameObjectDelete();
 		wall->clean();
 	}
 }

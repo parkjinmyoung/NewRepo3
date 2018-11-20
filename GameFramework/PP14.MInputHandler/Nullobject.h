@@ -12,6 +12,4 @@ public:
 	virtual void clean() {}
 	virtual float getX() { return NULL; }
 	virtual float getY() { return NULL; }
-
-
 };

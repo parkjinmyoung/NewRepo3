@@ -2,7 +2,7 @@
 #include "Game.h"
 
 
-SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
+SDLGameObject::SDLGameObject(const LoaderParams* pParams, int n) :
 	GameObject(pParams),
 	m_position(pParams->getX(), pParams->getY()),
 	m_velocity(0.0f, 0.0f), m_acceleration(0.0f, 0.0f)
@@ -12,6 +12,8 @@ SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
 	m_textureID = pParams->getTextureID();
 	m_currentRow = 1;
 	m_currentFrame = 1;
+
+	Order = n;
 }
 
 
@@ -31,4 +33,9 @@ void SDLGameObject::update()
 
 void SDLGameObject::clean()
 {
+}
+
+void SDLGameObject::GameObjectDelete()
+{
+	TheGame::Instance()->m_gameObjects[Order] = new Nullobject(new LoaderParams(NULL, NULL, NULL, NULL, ""), Order);
 }
