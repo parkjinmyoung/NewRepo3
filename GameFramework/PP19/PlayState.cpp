@@ -41,6 +41,7 @@ bool PlayState::onEnter()
 		"helicopter2", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
+
 	GameObject* player = new Player(
 		new LoaderParams(500, 100, 128, 55, "helicopter"));
 	GameObject* enemy = new Enemy(
