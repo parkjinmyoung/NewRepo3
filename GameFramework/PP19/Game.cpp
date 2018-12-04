@@ -21,7 +21,10 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
 
-		MY_GAMEMACHINE::Instance()->changeState(S_Menu::Instance());
+		
+
+		StateFactory::Instance()->Run();
+
 
 		m_bRunning = true;
 	}

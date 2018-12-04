@@ -14,13 +14,13 @@ void PlayState::update()
 		dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
 		dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
 	{
-		TheGame::Instance()->getStateMachine()->changeState(
+		MY_GAMEMACHINE::Instance()->changeState(
 			S_Over::Instance());
 	}
 	else if (TheInputHandler::Instance()->isKeyDown(
 		SDL_SCANCODE_ESCAPE))
 	{
-		TheGame::Instance()->getStateMachine()->changeState(
+		MY_GAMEMACHINE::Instance()->changeState(
 			S_Pause::Instance());
 
 	}

@@ -1,6 +1,6 @@
 #include "GameStateMachine.h"
 
-static GameStateMachine* s_pInstance = 0;
+GameStateMachine*GameStateMachine::s_pInstance = 0;;
 
 void GameStateMachine::pushState(GameState *pState)
 {

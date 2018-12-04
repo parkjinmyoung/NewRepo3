@@ -22,7 +22,7 @@ public:
 		return s_pInstance;
 	}
 
-
+	
 
 private:
 	GameState* m_currentState;
@@ -30,8 +30,8 @@ private:
 
 	GameStateMachine() {};
 
-
 	static GameStateMachine* s_pInstance;
+	
 
 	std::vector<GameState*> m_gameStates;
 };
