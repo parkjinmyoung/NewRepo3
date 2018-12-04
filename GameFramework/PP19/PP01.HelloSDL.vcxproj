@@ -163,6 +163,7 @@
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="SDLGameObject.h" />
     <ClInclude Include="SDLGameState.h" />
+    <ClInclude Include="StateFactory.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2D.h" />
   </ItemGroup>
