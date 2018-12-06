@@ -6,13 +6,13 @@ PauseState*PauseState::s_pInstance = 0;
 
 void PauseState::s_pauseToMain()
 {
-	TheGame::Instance()->getStateMachine()->changeState(
+	MY_GAMEMACHINE::Instance()->changeState(
 		S_Menu::Instance());
 }
 
 void PauseState::s_resumePlay()
 {
-	TheGame::Instance()->getStateMachine()->popState();
+	MY_GAMEMACHINE::Instance()->popState();
 }
 
 void PauseState::update()

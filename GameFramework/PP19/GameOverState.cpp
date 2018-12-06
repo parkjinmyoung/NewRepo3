@@ -7,12 +7,12 @@ GameOverState*GameOverState::s_pInstance = 0;
 
 void GameOverState::s_gameOverToMain()
 {
-	TheGame::Instance()->getStateMachine()->changeState(
+	MY_GAMEMACHINE::Instance()->changeState(
 		S_Menu::Instance());
 }
 void GameOverState::s_restartPlay()
 {
-	TheGame::Instance()->getStateMachine()->changeState(
+	MY_GAMEMACHINE::Instance()->changeState(
 		S_Play::Instance());
 }
 

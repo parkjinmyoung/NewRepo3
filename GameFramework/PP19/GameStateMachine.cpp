@@ -1,5 +1,7 @@
 #include "GameStateMachine.h"
 
+GameStateMachine*GameStateMachine::s_pInstance = 0;;
+
 void GameStateMachine::pushState(GameState *pState)
 {
 	m_gameStates.push_back(pState);

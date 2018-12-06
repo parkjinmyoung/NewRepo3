@@ -20,12 +20,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		}
 
 		SDL_SetRenderDrawColor(m_pRenderer, 255, 0, 0, 255);
-		\
-
-		m_pGameStateMachine = new GameStateMachine();
-		m_pGameStateMachine->changeState(S_Menu::Instance());
 
 		
+
+		StateFactory::Instance()->Run();
+
 
 		m_bRunning = true;
 	}
@@ -42,14 +41,14 @@ void Game::render()
 {
 	SDL_RenderClear(m_pRenderer);
 
-	m_pGameStateMachine->render();
+	MY_GAMEMACHINE::Instance()->render();
 
 	SDL_RenderPresent(m_pRenderer);
 }
 
 void Game::update()
 {
-	m_pGameStateMachine->update();
+	MY_GAMEMACHINE::Instance()->update();
 }
 
 
@@ -66,7 +65,7 @@ void Game::handleEvents()
 	TheInputHandler::Instance()->Update();
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_RETURN))
 	{
-		m_pGameStateMachine->changeState(PlayState::Instance());
+		MY_GAMEMACHINE::Instance()->changeState(PlayState::Instance());
 	}
 
 }

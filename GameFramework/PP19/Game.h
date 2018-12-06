@@ -12,6 +12,7 @@
 #include "MenuState.h"
 #include "GameState.h"
 #include "PlayState.h"
+#include "StateFactory.h"
 
 class Game
 {
@@ -43,13 +44,10 @@ public:
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
-	GameStateMachine* getStateMachine() { return m_pGameStateMachine; }
 
 private:
 
 	
-
-	GameStateMachine* m_pGameStateMachine;
 
 
 	static Game* s_pInstance;
