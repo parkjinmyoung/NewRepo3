@@ -10,6 +10,7 @@ void PlayState::update()
 
 	SDLGameState::update();
 
+
 	if (checkCollision(
 		dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
 		dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
@@ -33,6 +34,7 @@ void PlayState::render()
 
 bool PlayState::onEnter()
 {
+	GameObjectsOrder = 0;
 	if (!TheTextureManager::Instance()->load("assets/helicopter.png",
 		"helicopter", TheGame::Instance()->getRenderer())) {
 		return false;
@@ -41,13 +43,49 @@ bool PlayState::onEnter()
 		"helicopter2", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
+	
+	if (!TheTextureManager::Instance()->load("assets/front.png",
+		"player", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/go front.png",
+		"playerfront", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/go right.png",
+		"playerright", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/go left.png",
+		"playerleft", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/go back.png",
+		"playerback", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/bullet3.png",
+		"bullet", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 
 	GameObject* player = new Player(
-		new LoaderParams(500, 100, 128, 55, "helicopter"));
+						//xÁÂÇ¥ yÁÂÇ¥ /°¡·Î ¼¼·Î
+		new LoaderParams(500, 100, 128, 82, "player"), GameObjectsOrder++);
 	GameObject* enemy = new Enemy(
-		new LoaderParams(100, 100, 128, 55, "helicopter2"));
+		new LoaderParams(100, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
+	GameObject* enemy2 = new Enemy(
+		new LoaderParams(200, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
+
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
+	m_gameObjects.push_back(enemy2);
 	std::cout << "entering PlayState\n";
 	return true;
 }
@@ -61,6 +99,7 @@ bool PlayState::onExit()
 	std::cout << "exiting PlayState\n";
 	return true;
 }
+
 
 bool PlayState::checkCollision(SDLGameObject* p1, SDLGameObject* p2)
 {

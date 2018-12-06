@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "InputHandler.h"
-
+#include "PlayState.h"
+#include "Newbullet.h"
 
 void Player::handleInput()
 {
@@ -25,7 +26,7 @@ void Player::handleInput()
 		m_textureID = "playerfront";
 	}
 
-	/*
+	
 	if (TheInputHandler::Instance()->getMouseButtonState(LEFT))
 	{
 		//shoot
@@ -37,10 +38,10 @@ void Player::handleInput()
 				>= abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
 
-				cout << TheGame::Instance()->m_gameObjects.size() << endl;
+				cout << S_Play::Instance()->m_gameObjects.size() << endl;
 
-				TheGame::Instance()->m_gameObjects.push_back
-				(new Newbullet(new LoaderParams(m_position.getX() + 60, m_position.getY(), 64, 64, "bullet"), TheGame::Instance()->GameObjectsOrder++, 5, 0));
+				S_Play::Instance()->m_gameObjects.push_back
+				(new Newbullet(new LoaderParams(m_position.getX() + 60, m_position.getY(), 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, 5, 0));
 
 
 				m_textureID = "playerright";
@@ -50,10 +51,10 @@ void Player::handleInput()
 				abs(m_position.getX() - TheInputHandler::Instance()->getMousePosition()->getX())
 				>= abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
-				cout << TheGame::Instance()->m_gameObjects.size() << endl;
+				cout << S_Play::Instance()->m_gameObjects.size() << endl;
 
-				TheGame::Instance()->m_gameObjects.push_back
-				(new Newbullet(new LoaderParams(m_position.getX() + 20, m_position.getY(), 64, 64, "bullet"), TheGame::Instance()->GameObjectsOrder++, -5, 0));
+				S_Play::Instance()->m_gameObjects.push_back
+				(new Newbullet(new LoaderParams(m_position.getX() + 20, m_position.getY(), 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, -5, 0));
 
 
 				m_textureID = "playerleft";
@@ -65,10 +66,10 @@ void Player::handleInput()
 				< abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
 
-				cout << TheGame::Instance()->m_gameObjects.size() << endl;
+				cout << S_Play::Instance()->m_gameObjects.size() << endl;
 
-				TheGame::Instance()->m_gameObjects.push_back
-				(new Newbullet(new LoaderParams(m_position.getX() + 40, m_position.getY() - 30, 64, 64, "bullet"), TheGame::Instance()->GameObjectsOrder++, 0, -5));
+				S_Play::Instance()->m_gameObjects.push_back
+				(new Newbullet(new LoaderParams(m_position.getX() + 40, m_position.getY() - 30, 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, 0, -5));
 
 
 				m_textureID = "playerback";
@@ -78,10 +79,10 @@ void Player::handleInput()
 				abs(m_position.getX() - TheInputHandler::Instance()->getMousePosition()->getX())
 				< abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
-				cout << TheGame::Instance()->m_gameObjects.size() << endl;
+				cout << S_Play::Instance()->m_gameObjects.size() << endl;
 
-				TheGame::Instance()->m_gameObjects.push_back
-				(new Newbullet(new LoaderParams(m_position.getX() + 40, m_position.getY() + 30, 64, 64, "bullet"), TheGame::Instance()->GameObjectsOrder++, 0, 5));
+				S_Play::Instance()->m_gameObjects.push_back
+				(new Newbullet(new LoaderParams(m_position.getX() + 40, m_position.getY() + 30, 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, 0, 5));
 
 
 				m_textureID = "playerfront";
@@ -90,11 +91,11 @@ void Player::handleInput()
 		}
 
 	}
-	*/
+	
 }
 
 
-Player::Player(const LoaderParams* pParams) : SDLGameObject(pParams)
+Player::Player(const LoaderParams* pParams , int n) : SDLGameObject(pParams,n)
 {
 
 }
@@ -106,10 +107,11 @@ void Player::draw()
 
 void Player::update()
 {
+	m_textureID = "player";
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	handleInput(); // add our function
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 5));
+	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
 	SDLGameObject::update();
 
 

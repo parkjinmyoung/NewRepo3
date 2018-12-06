@@ -16,6 +16,9 @@ public:
 		return s_pInstance;
 	}
 
+	int GameObjectsOrder = 0;
+
+	std::vector<SDLGameObject*> m_WallObjects;
 
 	virtual void update();
 	virtual void render();
