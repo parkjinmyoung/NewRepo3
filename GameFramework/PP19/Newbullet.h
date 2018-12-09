@@ -16,6 +16,6 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
-	void collwall(SDLGameObject* wall);
-	void collghost(SDLGameObject* wall);
+	bool checkCollision(SDLGameObject* wall);
+	void damage(SDLGameObject* wall);
 };

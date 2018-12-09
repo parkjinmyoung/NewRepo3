@@ -5,6 +5,7 @@ Enemy::Enemy(const LoaderParams* pParams, int n) : SDLGameObject(pParams , n)
 {
 	m_velocity.setY(2);
 	m_velocity.setX(0.001);
+	Tag = "ENEMY";
 }
 void Enemy::draw()
 {
@@ -20,4 +21,9 @@ void Enemy::update()
 		m_velocity.setY(-2);
 	}
 	SDLGameObject::update();
+}
+
+void Enemy::clean()
+{
+	GameObjectDelete();
 }

@@ -1,13 +1,14 @@
 #pragma once
 #include<string>
 #include<vector>
-#include "GameObject.h"
+#include "SDLGameObject.h"
 
 class GameState
 {
 
 public:
-	std::vector<GameObject*> m_gameObjects;
+	std::vector<SDLGameObject*> m_gameObjects;
+
 
 	virtual void update() = 0;
 	virtual void render() = 0;

@@ -31,15 +31,22 @@ void Newbullet::update()
 	m_velocity.setY(yvelo);
 
 	for (std::vector<SDLGameObject*>::size_type i = 0;
-		i != S_Play::Instance()->m_WallObjects.size(); i++)
+		i != S_Play::Instance()->m_gameObjects.size(); i++)
 	{
-		if (S_Play::Instance()->m_WallObjects[i]->Tag == "WALL")
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
 		{
-			collwall(S_Play::Instance()->m_WallObjects[i]);
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				GameObjectDelete();
+			}
 		}
-		if (S_Play::Instance()->m_WallObjects[i]->Tag == "GHOST")
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
 		{
-			collghost(S_Play::Instance()->m_WallObjects[i]);
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				damage(S_Play::Instance()->m_gameObjects[i]);
+				GameObjectDelete();
+			}
 		}
 	}
 	SDLGameObject::update();
@@ -50,26 +57,44 @@ void Newbullet::clean()
 
 }
 
-void Newbullet::collwall(SDLGameObject* wall)
+void Newbullet::damage(SDLGameObject* wall)
 {
-	if ((int)this->getPosition().getX() + 64 > (int)wall->getPosition().getX() &&
-		(int)this->getPosition().getX() < (int)wall->getPosition().getX() + 130 &&
-		(int)this->getPosition().getY() + 64 > (int)wall->getPosition().getY() &&
-		(int)this->getPosition().getY() < (int)wall->getPosition().getY() + 130)
-	{
-		GameObjectDelete();
-		wall->clean();
-	}
+	wall->clean();
 }
+//void Newbullet::collwall(SDLGameObject* wall)
+//{
+//	if ((int)this->getPosition().getX() + 64 > (int)wall->getPosition().getX() &&
+//		(int)this->getPosition().getX() < (int)wall->getPosition().getX() + 130 &&
+//		(int)this->getPosition().getY() + 64 > (int)wall->getPosition().getY() &&
+//		(int)this->getPosition().getY() < (int)wall->getPosition().getY() + 130)
+//	{
+//		GameObjectDelete();
+//		wall->clean();
+//	}
+//}
 
-void Newbullet::collghost(SDLGameObject* wall)
+bool Newbullet::checkCollision(SDLGameObject* wall)
 {
-	if ((int)this->getPosition().getX() + 64 > (int)wall->getPosition().getX() &&
-		(int)this->getPosition().getX() < (int)wall->getPosition().getX() + 128 &&
-		(int)this->getPosition().getY() + 64 > (int)wall->getPosition().getY() &&
-		(int)this->getPosition().getY() < (int)wall->getPosition().getY() + 82)
-	{
-		GameObjectDelete();
-		wall->clean();
-	}
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	leftA = this->getPosition().getX();
+	rightA = this->getPosition().getX() + this->getWidth();
+	topA = this->getPosition().getY();
+	bottomA = this->getPosition().getY() + this->getHeight();
+
+	//Calculate the sides of rect B
+	leftB = wall->getPosition().getX();
+	rightB = wall->getPosition().getX() + wall->getWidth();
+	topB = wall->getPosition().getY();
+	bottomB = wall->getPosition().getY() + wall->getHeight();
+
+	//If any of the sides from A are outside of B
+	if (bottomA <= topB) { return false; }
+	if (topA >= bottomB) { return false; }
+	if (rightA <= leftB) { return false; }
+	if (leftA >= rightB) { return false; }
+	return true;
 }

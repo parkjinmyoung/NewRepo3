@@ -11,14 +11,15 @@ void PlayState::update()
 	SDLGameState::update();
 
 
-	if (checkCollision(
+	/*if (checkCollision(
 		dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
 		dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
 	{
 		MY_GAMEMACHINE::Instance()->changeState(
 			S_Over::Instance());
 	}
-	else if (TheInputHandler::Instance()->isKeyDown(
+	else */
+	if (TheInputHandler::Instance()->isKeyDown(
 		SDL_SCANCODE_ESCAPE))
 	{
 		MY_GAMEMACHINE::Instance()->changeState(
@@ -75,17 +76,19 @@ bool PlayState::onEnter()
 		return false;
 	}
 
-	GameObject* player = new Player(
+	SDLGameObject* player = new Player(
 						//xÁÂÇ¥ yÁÂÇ¥ /°¡·Î ¼¼·Î
 		new LoaderParams(500, 100, 128, 82, "player"), GameObjectsOrder++);
-	GameObject* enemy = new Enemy(
+	SDLGameObject* enemy = new Enemy(
 		new LoaderParams(100, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
-	GameObject* enemy2 = new Enemy(
+	SDLGameObject* enemy2 = new Enemy(
 		new LoaderParams(200, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
 
 	m_gameObjects.push_back(player);
 	m_gameObjects.push_back(enemy);
+	
 	m_gameObjects.push_back(enemy2);
+	
 	std::cout << "entering PlayState\n";
 	return true;
 }

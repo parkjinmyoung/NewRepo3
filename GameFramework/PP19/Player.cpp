@@ -111,8 +111,58 @@ void Player::update()
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	handleInput(); // add our function
+
+	for (std::vector<SDLGameObject*>::size_type i = 0;
+		i != S_Play::Instance()->m_gameObjects.size(); i++)
+	{
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+
+			}
+		}
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				MY_GAMEMACHINE::Instance()->changeState(
+					S_Over::Instance());
+				break;
+			}
+			
+		}
+	}
+
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
 	SDLGameObject::update();
 
 
+}
+
+
+bool Player::checkCollision(SDLGameObject* wall)
+{
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	leftA = this->getPosition().getX();
+	rightA = this->getPosition().getX() + this->getWidth();
+	topA = this->getPosition().getY();
+	bottomA = this->getPosition().getY() + this->getHeight();
+
+	//Calculate the sides of rect B
+	leftB = wall->getPosition().getX();
+	rightB = wall->getPosition().getX() + wall->getWidth();
+	topB = wall->getPosition().getY();
+	bottomB = wall->getPosition().getY() + wall->getHeight();
+
+	//If any of the sides from A are outside of B
+	if (bottomA <= topB) { return false; }
+	if (topA >= bottomB) { return false; }
+	if (rightA <= leftB) { return false; }
+	if (leftA >= rightB) { return false; }
+	return true;
 }

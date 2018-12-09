@@ -1,5 +1,6 @@
 #include "SDLGameObject.h"
 #include "Game.h"
+#include "Nullobject.h"
 
 
 SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
@@ -56,7 +57,7 @@ void SDLGameObject::update()
 
 void SDLGameObject::GameObjectDelete()
 {
-	S_Play::Instance()->m_gameObjects[Order] = new SDLGameObject(new LoaderParams(NULL, NULL, NULL, NULL, ""), Order);
+	S_Play::Instance()->m_gameObjects[Order] = new Nullobject(new LoaderParams(NULL, NULL, NULL, NULL, ""), Order);
 }
 
 void SDLGameObject::clean()

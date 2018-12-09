@@ -12,7 +12,7 @@ private:
 public:
 	Player(const LoaderParams* pParams, int n);
 
-
+	bool checkCollision(SDLGameObject* wall);
 	virtual void draw();
 	virtual void update();
 	//virtual void clean();
