@@ -5,14 +5,14 @@
 #include "PauseState.h"
 #include "PlayState.h"
 
-class StateFactory
+class StateManager
 {
 public:
-	static StateFactory* Instance()
+	static StateManager* Instance()
 	{
 		if (s_pInstance == 0)
 		{
-			s_pInstance = new StateFactory();
+			s_pInstance = new StateManager();
 			return s_pInstance;
 		}
 		return s_pInstance;
@@ -20,6 +20,6 @@ public:
 	void Run();
 
 private:
-	static StateFactory* s_pInstance;
+	static StateManager* s_pInstance;
 
 };

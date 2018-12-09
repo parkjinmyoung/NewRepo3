@@ -1,9 +1,9 @@
-#include "StateFactory.h"
+#include "StateManager.h"
 
-StateFactory*StateFactory::s_pInstance = 0;;
+StateManager*StateManager::s_pInstance = 0;;
 
 
-void StateFactory::Run()
+void StateManager::Run()
 {
 	MY_GAMEMACHINE::Instance()->changeState(S_Menu::Instance());
 }

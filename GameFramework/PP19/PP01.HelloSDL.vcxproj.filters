@@ -66,6 +66,12 @@
     <ClCompile Include="Newbullet.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="StateDecorate.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -122,9 +128,6 @@
     <ClInclude Include="SDLGameState.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="StateFactory.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="StateDecorate.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -132,6 +135,12 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Nullobject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,7 +12,7 @@
 #include "MenuState.h"
 #include "GameState.h"
 #include "PlayState.h"
-#include "StateFactory.h"
+#include "StateManager.h"
 
 class Game
 {
