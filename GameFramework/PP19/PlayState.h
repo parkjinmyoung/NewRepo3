@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "Game.h"
 #include "GameOverState.h"
+#include "Wall.h"
 class PlayState : public SDLGameState
 {
 public:

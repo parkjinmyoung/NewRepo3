@@ -75,19 +75,39 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/bullet3.png",
+		"bullet", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/a.png",
+		"wall", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+
 
 	SDLGameObject* player = new Player(
 						//xÁÂÇ¥ yÁÂÇ¥ /°¡·Î ¼¼·Î
 		new LoaderParams(500, 100, 128, 82, "player"), GameObjectsOrder++);
+	m_gameObjects.push_back(player);
+
+
 	SDLGameObject* enemy = new Enemy(
 		new LoaderParams(100, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
+	m_gameObjects.push_back(enemy);
+
 	SDLGameObject* enemy2 = new Enemy(
 		new LoaderParams(200, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
-
-	m_gameObjects.push_back(player);
-	m_gameObjects.push_back(enemy);
-	
 	m_gameObjects.push_back(enemy2);
+
+	SDLGameObject* wall = new Wall(
+		new LoaderParams(300, 200, 200, 200, "wall"), GameObjectsOrder++);
+	m_gameObjects.push_back(wall);
+	
+	
+	
+	
 	
 	std::cout << "entering PlayState\n";
 	return true;

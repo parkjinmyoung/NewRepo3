@@ -119,10 +119,10 @@ void Player::update()
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
-
+				CollWall();
 			}
 		}
-		if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
@@ -165,4 +165,24 @@ bool Player::checkCollision(SDLGameObject* wall)
 	if (rightA <= leftB) { return false; }
 	if (leftA >= rightB) { return false; }
 	return true;
+}
+
+void Player::CollWall()
+{
+	if (m_velocity.getX() > 0)
+	{
+		m_position.setX(m_position.getX() - 5);
+	}
+	if(m_velocity.getX() < 0)
+	{
+		m_position.setX(m_position.getX() + 5);
+	}
+	if (m_velocity.getY() > 0)
+	{
+		m_position.setY(m_position.getY() - 5);
+	}
+	if (m_velocity.getY() < 0)
+	{
+		m_position.setY(m_position.getY() + 5);
+	}
 }
