@@ -20,10 +20,10 @@ void Newbullet::draw()
 }
 void Newbullet::update()
 {
-	if ((int)this->getPosition().getX() > 700 ||
+	if ((int)this->getPosition().getX() > 900 ||
 		(int)this->getPosition().getX() < -100 ||
 		(int)this->getPosition().getY() < -100 ||
-		(int)this->getPosition().getY() > 600)
+		(int)this->getPosition().getY() > 900)
 	{
 		GameObjectDelete();
 	}

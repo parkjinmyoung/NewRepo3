@@ -147,7 +147,7 @@
     <ClCompile Include="SDLGameObject.cpp" />
     <ClCompile Include="SDLGameState.cpp" />
     <ClCompile Include="StateDecorate.cpp" />
-    <ClCompile Include="StateFactory.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Wall.cpp" />
   </ItemGroup>
