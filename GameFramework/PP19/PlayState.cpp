@@ -85,6 +85,16 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/grass.jpg",
+		"grass", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+
+
+	SDLGameObject* grass = new BackGround(
+		new LoaderParams(0, 0, 800, 800, "grass"), GameObjectsOrder++);
+	m_gameObjects.push_back(grass);
 
 
 	SDLGameObject* player = new Player(

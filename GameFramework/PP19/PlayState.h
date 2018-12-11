@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "GameOverState.h"
 #include "Wall.h"
+#include "background.h"
 class PlayState : public SDLGameState
 {
 public:
