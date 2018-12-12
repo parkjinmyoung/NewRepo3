@@ -2,6 +2,7 @@
 #include "MenuButton.h"
 #include "Game.h"
 #include <iostream>
+#include "WallDecorate.h"
 
 const std::string MenuState::s_menuID = "MENU";
 
@@ -60,7 +61,7 @@ bool MenuState::onExit()
 
 void MenuState::s_menuToPlay()
 {
-	MY_GAMEMACHINE::Instance()->changeState(S_Play::Instance());
+	MY_GAMEMACHINE::Instance()->changeState(new WallDecorate(S_Play::Instance()));
 }
 
 

@@ -8,7 +8,7 @@ void Player::handleInput()
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
 	{
 		m_velocity.setX(2);
-		m_textureID = "playerright";
+		m_textureID = "playerleft";
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A))
 	{
@@ -112,6 +112,10 @@ void Player::update()
 	m_velocity.setY(0);
 	handleInput(); // add our function
 
+	
+
+	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
+	SDLGameObject::update();
 	for (std::vector<SDLGameObject*>::size_type i = 0;
 		i != S_Play::Instance()->m_gameObjects.size(); i++)
 	{
@@ -119,9 +123,10 @@ void Player::update()
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
-				CollWall();
+				CollWall(S_Play::Instance()->m_gameObjects[i]);
 			}
 		}
+
 		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
@@ -130,35 +135,34 @@ void Player::update()
 					S_Over::Instance());
 				break;
 			}
-			
+
 		}
 	}
-
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
-	SDLGameObject::update();
-
 
 }
 
 
 
 
-void Player::CollWall()
+void Player::CollWall(SDLGameObject * wall)
 {
-	if (m_velocity.getX() > 0)
-	{
-		m_position.setX(m_position.getX() - 5);
-	}
-	if(m_velocity.getX() < 0)
+	
+	if ( m_velocity.getX() < 0)
 	{
 		m_position.setX(m_position.getX() + 5);
 	}
-	if (m_velocity.getY() > 0)
+	else if ( m_velocity.getX() > 0)
+	{
+		m_position.setX(m_position.getX() - 5);
+	}
+	
+	if ( m_velocity.getY() > 0)
 	{
 		m_position.setY(m_position.getY() - 5);
 	}
-	if (m_velocity.getY() < 0)
+	else if (m_velocity.getY() < 0 )
 	{
 		m_position.setY(m_position.getY() + 5);
 	}
+
 }

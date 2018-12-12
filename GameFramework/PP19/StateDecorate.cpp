@@ -25,8 +25,3 @@ bool StateDecorate::onExit()
 {
 	return super->onExit();
 }
-
-bool StateDecorate::checkCollision(SDLGameObject* p1, SDLGameObject* p2)
-{
-	return S_Play::Instance()->checkCollision(p1,p2);
-}

@@ -1,5 +1,6 @@
 #include "PlayState.h"
 #include "PauseState.h"
+#include "Enemy2.h"
 
 const std::string PlayState::s_playID = "PLAY";
 
@@ -90,6 +91,16 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/block.png",
+		"block", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/block2.png",
+		"block2", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 
 
 	SDLGameObject* grass = new BackGround(
@@ -107,15 +118,11 @@ bool PlayState::onEnter()
 		new LoaderParams(100, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
 	m_gameObjects.push_back(enemy);
 
-	SDLGameObject* enemy2 = new Enemy(
+	SDLGameObject* enemy2 = new Enemy2(
 		new LoaderParams(200, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
 	m_gameObjects.push_back(enemy2);
 
-	SDLGameObject* wall = new Wall(
-		new LoaderParams(300, 200, 200, 200, "wall"), GameObjectsOrder++);
-	m_gameObjects.push_back(wall);
-	
-	
+
 	
 	
 	

@@ -29,10 +29,19 @@ void Enemy2::gotoplayer()
 {
 	if (S_Play::Instance()->m_gameObjects[1]->getPosition().getX() > this->getPosition().getX())
 	{
-		//go
+		m_velocity.setX(1);
 	}
 	else
 	{
-		//0go
+		m_velocity.setX(-1);
+	}
+
+	if (S_Play::Instance()->m_gameObjects[1]->getPosition().getY() > this->getPosition().getY())
+	{
+		m_velocity.setY(1);
+	}
+	else
+	{
+		m_velocity.setY(-1);
 	}
 }

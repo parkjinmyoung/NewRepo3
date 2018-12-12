@@ -13,8 +13,6 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 
-	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
-
 
 private:
 	SDLGameState * super;
