@@ -3,6 +3,7 @@
 #include "Game.h"
 #include <iostream>
 #include "WallDecorate.h"
+#include "EnemyDecorate.h"
 
 const std::string MenuState::s_menuID = "MENU";
 
@@ -61,7 +62,7 @@ bool MenuState::onExit()
 
 void MenuState::s_menuToPlay()
 {
-	MY_GAMEMACHINE::Instance()->changeState(new WallDecorate(S_Play::Instance()));
+	MY_GAMEMACHINE::Instance()->changeState(new EnemyDecorate(new WallDecorate(S_Play::Instance())));
 }
 
 

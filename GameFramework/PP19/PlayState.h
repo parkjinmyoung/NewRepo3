@@ -4,6 +4,8 @@
 #include "GameOverState.h"
 #include "Wall.h"
 #include "background.h"
+#include "Enemy2.h"
+
 class PlayState : public SDLGameState
 {
 public:

@@ -2,10 +2,10 @@
 #include "StateDecorate.h"
 
 
-class WallDecorate :public StateDecorate
+class EnemyDecorate :public StateDecorate
 {
 public:
-	WallDecorate(SDLGameState* state);
+	EnemyDecorate(SDLGameState* state);
 
 	virtual void update();
 	virtual void render();
