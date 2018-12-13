@@ -30,9 +30,7 @@ bool EnemyDecorate::onEnter()
 	}
 
 
-	SDLGameObject* enemy = new Enemy(
-		new LoaderParams(100, 100, 128, 55, "helicopter2"), S_Play::Instance()->GameObjectsOrder++);
-	S_Play::Instance()->m_gameObjects.push_back(enemy);
+	
 
 	SDLGameObject* enemy2 = new Enemy2(
 		new LoaderParams(200, 100, 128, 55, "helicopter2"), S_Play::Instance()->GameObjectsOrder++);
