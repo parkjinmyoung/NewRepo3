@@ -4,10 +4,18 @@
 #include "MenuState.h"
 #include "PauseState.h"
 #include "PlayState.h"
+#include <vector>
+#include "EnemyDecorate.h"
+#include "WallDecorate.h"
 
 class StateManager
 {
 public:
+
+	int Curmap = 0;
+	
+	std::vector<GameState*> States;
+
 	static StateManager* Instance()
 	{
 		if (s_pInstance == 0)
@@ -17,9 +25,15 @@ public:
 		}
 		return s_pInstance;
 	}
+	GameState* InstanceMap();
 	void Run();
-
+	void GameStart();
+	void ChangeMap();
+	GameState* NextMap();
+	//GameState* PreviousMap();
 private:
 	static StateManager* s_pInstance;
 
 };
+
+typedef StateManager S_MANAGER;
