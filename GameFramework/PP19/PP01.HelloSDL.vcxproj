@@ -132,6 +132,8 @@
   <ItemGroup>
     <ClCompile Include="AnimatedGraphic.cpp" />
     <ClCompile Include="background.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossDecorate.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="DoorDecorate.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -163,6 +165,8 @@
   <ItemGroup>
     <ClInclude Include="AnimatedGraphic.h" />
     <ClInclude Include="background.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossDecorate.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="DoorDecorate.h" />
     <ClInclude Include="Enemy.h" />

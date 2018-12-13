@@ -12,7 +12,7 @@
 #include "EnemyDecorate.h"
 #include "EnemyDecorate2.h"
 #include "EnemyDecorate3.h"
-
+#include "BossDecorate.h"
 class StateManager
 {
 public:

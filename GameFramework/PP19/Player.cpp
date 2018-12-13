@@ -128,7 +128,7 @@ void Player::update()
 			}
 
 		}
-		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
@@ -136,7 +136,7 @@ void Player::update()
 			}
 		}
 
-		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{

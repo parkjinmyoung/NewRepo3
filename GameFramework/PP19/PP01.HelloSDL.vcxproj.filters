@@ -114,6 +114,12 @@
     <ClCompile Include="WallDecorate3.cpp">
       <Filter>소스 파일\gamestate</Filter>
     </ClCompile>
+    <ClCompile Include="BossDecorate.cpp">
+      <Filter>소스 파일\gamestate</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>소스 파일\gameobject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -214,6 +220,12 @@
     </ClInclude>
     <ClInclude Include="WallDecorate3.h">
       <Filter>헤더 파일\gamestate</Filter>
+    </ClInclude>
+    <ClInclude Include="BossDecorate.h">
+      <Filter>헤더 파일\gamestate</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>헤더 파일\gameobject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
