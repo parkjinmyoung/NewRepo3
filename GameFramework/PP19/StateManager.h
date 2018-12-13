@@ -8,6 +8,8 @@
 class StateManager
 {
 public:
+
+
 	static StateManager* Instance()
 	{
 		if (s_pInstance == 0)
