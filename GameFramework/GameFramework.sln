@@ -33,7 +33,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PP15.FSM", "PP15.FSM\PP01.H
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mini", "Mini", "{CD5ECBF8-A1A7-4364-BC34-484A8E065A13}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Miniproject", "PP19\PP01.HelloSDL.vcxproj", "{C0EF5E55-F9AF-4585-9FF2-54B376BBD1B8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Minininini", "PP19\PP01.HelloSDL.vcxproj", "{C0EF5E55-F9AF-4585-9FF2-54B376BBD1B8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MiniProject", "..\..\..\NewRepo3\GameFramework\MiniProject\MiniProject.vcxproj", "{B4229B45-02C6-4706-8B62-56AB7B185D66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -163,6 +165,14 @@ Global
 		{C0EF5E55-F9AF-4585-9FF2-54B376BBD1B8}.Release|x64.Build.0 = Release|x64
 		{C0EF5E55-F9AF-4585-9FF2-54B376BBD1B8}.Release|x86.ActiveCfg = Release|Win32
 		{C0EF5E55-F9AF-4585-9FF2-54B376BBD1B8}.Release|x86.Build.0 = Release|Win32
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Debug|x64.ActiveCfg = Debug|x64
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Debug|x64.Build.0 = Debug|x64
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Debug|x86.ActiveCfg = Debug|Win32
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Debug|x86.Build.0 = Debug|Win32
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Release|x64.ActiveCfg = Release|x64
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Release|x64.Build.0 = Release|x64
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Release|x86.ActiveCfg = Release|Win32
+		{B4229B45-02C6-4706-8B62-56AB7B185D66}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

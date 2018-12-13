@@ -1,5 +1,6 @@
 #include "SDLGameObject.h"
 #include "Game.h"
+#include "Nullobject.h"
 
 
 SDLGameObject::SDLGameObject(const LoaderParams* pParams) :
@@ -56,9 +57,35 @@ void SDLGameObject::update()
 
 void SDLGameObject::GameObjectDelete()
 {
-	S_Play::Instance()->m_gameObjects[Order] = new SDLGameObject(new LoaderParams(NULL, NULL, NULL, NULL, ""), Order);
+	S_Play::Instance()->m_gameObjects[Order] = new Nullobject(new LoaderParams(NULL, NULL, NULL, NULL, ""), Order);
 }
 
 void SDLGameObject::clean()
 {
+}
+
+bool SDLGameObject::checkCollision(SDLGameObject* wall)
+{
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	leftA = this->getPosition().getX();
+	rightA = this->getPosition().getX() + this->getWidth();
+	topA = this->getPosition().getY();
+	bottomA = this->getPosition().getY() + this->getHeight();
+
+	//Calculate the sides of rect B
+	leftB = wall->getPosition().getX();
+	rightB = wall->getPosition().getX() + wall->getWidth();
+	topB = wall->getPosition().getY();
+	bottomB = wall->getPosition().getY() + wall->getHeight();
+
+	//If any of the sides from A are outside of B
+	if (bottomA <= topB) { return false; }
+	if (topA >= bottomB) { return false; }
+	if (rightA <= leftB) { return false; }
+	if (leftA >= rightB) { return false; }
+	return true;
 }

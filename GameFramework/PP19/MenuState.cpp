@@ -2,6 +2,8 @@
 #include "MenuButton.h"
 #include "Game.h"
 #include <iostream>
+#include "WallDecorate.h"
+#include "EnemyDecorate.h"
 
 const std::string MenuState::s_menuID = "MENU";
 
@@ -30,11 +32,11 @@ bool MenuState::onEnter()
 	{
 		return false;
 	}
-	GameObject* button1 = new MenuButton(
+	SDLGameObject* button1 = new MenuButton(
 		new LoaderParams(100, 100, 400, 100, "playbutton"),
 		s_menuToPlay);
 
-	GameObject* button2 = new MenuButton(
+	SDLGameObject* button2 = new MenuButton(
 		new LoaderParams(100, 300, 400, 100, "exitbutton"),
 		s_exitFromMenu);
 
@@ -60,7 +62,7 @@ bool MenuState::onExit()
 
 void MenuState::s_menuToPlay()
 {
-	MY_GAMEMACHINE::Instance()->changeState(S_Play::Instance());
+	S_MANAGER::Instance()->GameStart();
 }
 
 

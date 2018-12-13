@@ -11,6 +11,8 @@ public:
 	virtual void update();
 	virtual void clean();
 
+	bool checkCollision(SDLGameObject* wall);
+
 	Vector2D& getPosition() { return m_position; }
 	int getWidth() { return m_width; }
 	int getHeight() { return m_height; }

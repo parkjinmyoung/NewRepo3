@@ -2,13 +2,13 @@
 #include "SDLGameObject.h"
 
 
-class Enemy : public SDLGameObject
+class BackGround : public SDLGameObject
 {
 private:
 	//void handleInput();
 
 public:
-	Enemy(const LoaderParams* pParams,int n);
+	BackGround(const LoaderParams* pParams, int n);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();

@@ -2,6 +2,10 @@
 #include "GameState.h"
 #include "Game.h"
 #include "GameOverState.h"
+#include "Wall.h"
+#include "background.h"
+#include "Enemy2.h"
+
 class PlayState : public SDLGameState
 {
 public:
@@ -25,9 +29,10 @@ public:
 	virtual bool onEnter();
 	virtual bool onExit();
 	virtual std::string getStateID() const { return s_playID; }
+	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
 private:
 	PlayState() {} ;
-	bool checkCollision(SDLGameObject* p1, SDLGameObject* p2);
+	
 
 	static const std::string s_playID;
 	static PlayState* s_pInstance;

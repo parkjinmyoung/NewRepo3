@@ -20,10 +20,10 @@ void Newbullet::draw()
 }
 void Newbullet::update()
 {
-	if ((int)this->getPosition().getX() > 700 ||
+	if ((int)this->getPosition().getX() > 900 ||
 		(int)this->getPosition().getX() < -100 ||
 		(int)this->getPosition().getY() < -100 ||
-		(int)this->getPosition().getY() > 600)
+		(int)this->getPosition().getY() > 900)
 	{
 		GameObjectDelete();
 	}
@@ -31,15 +31,22 @@ void Newbullet::update()
 	m_velocity.setY(yvelo);
 
 	for (std::vector<SDLGameObject*>::size_type i = 0;
-		i != S_Play::Instance()->m_WallObjects.size(); i++)
+		i != S_Play::Instance()->m_gameObjects.size(); i++)
 	{
-		if (S_Play::Instance()->m_WallObjects[i]->Tag == "WALL")
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
 		{
-			collwall(S_Play::Instance()->m_WallObjects[i]);
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				GameObjectDelete();
+			}
 		}
-		if (S_Play::Instance()->m_WallObjects[i]->Tag == "GHOST")
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
 		{
-			collghost(S_Play::Instance()->m_WallObjects[i]);
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				damage(S_Play::Instance()->m_gameObjects[i]);
+				GameObjectDelete();
+			}
 		}
 	}
 	SDLGameObject::update();
@@ -50,26 +57,18 @@ void Newbullet::clean()
 
 }
 
-void Newbullet::collwall(SDLGameObject* wall)
+void Newbullet::damage(SDLGameObject* wall)
 {
-	if ((int)this->getPosition().getX() + 64 > (int)wall->getPosition().getX() &&
-		(int)this->getPosition().getX() < (int)wall->getPosition().getX() + 130 &&
-		(int)this->getPosition().getY() + 64 > (int)wall->getPosition().getY() &&
-		(int)this->getPosition().getY() < (int)wall->getPosition().getY() + 130)
-	{
-		GameObjectDelete();
-		wall->clean();
-	}
+	wall->clean();
 }
-
-void Newbullet::collghost(SDLGameObject* wall)
-{
-	if ((int)this->getPosition().getX() + 64 > (int)wall->getPosition().getX() &&
-		(int)this->getPosition().getX() < (int)wall->getPosition().getX() + 128 &&
-		(int)this->getPosition().getY() + 64 > (int)wall->getPosition().getY() &&
-		(int)this->getPosition().getY() < (int)wall->getPosition().getY() + 82)
-	{
-		GameObjectDelete();
-		wall->clean();
-	}
-}
+//void Newbullet::collwall(SDLGameObject* wall)
+//{
+//	if ((int)this->getPosition().getX() + 64 > (int)wall->getPosition().getX() &&
+//		(int)this->getPosition().getX() < (int)wall->getPosition().getX() + 130 &&
+//		(int)this->getPosition().getY() + 64 > (int)wall->getPosition().getY() &&
+//		(int)this->getPosition().getY() < (int)wall->getPosition().getY() + 130)
+//	{
+//		GameObjectDelete();
+//		wall->clean();
+//	}
+//}

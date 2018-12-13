@@ -1,6 +1,7 @@
 #include "PlayState.h"
 #include "PauseState.h"
 
+
 const std::string PlayState::s_playID = "PLAY";
 
 PlayState*PlayState::s_pInstance = 0;
@@ -11,14 +12,15 @@ void PlayState::update()
 	SDLGameState::update();
 
 
-	if (checkCollision(
+	/*if (checkCollision(
 		dynamic_cast<SDLGameObject*>(m_gameObjects[0]),
 		dynamic_cast<SDLGameObject*>(m_gameObjects[1])))
 	{
 		MY_GAMEMACHINE::Instance()->changeState(
 			S_Over::Instance());
 	}
-	else if (TheInputHandler::Instance()->isKeyDown(
+	else */
+	if (TheInputHandler::Instance()->isKeyDown(
 		SDL_SCANCODE_ESCAPE))
 	{
 		MY_GAMEMACHINE::Instance()->changeState(
@@ -74,18 +76,54 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/bullet3.png",
+		"bullet", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/a.png",
+		"wall", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/grass.jpg",
+		"grass", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/block.png",
+		"block", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/block2.png",
+		"block2", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/badak.png",
+		"badak", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 
-	GameObject* player = new Player(
+
+	SDLGameObject* grass = new BackGround(
+		new LoaderParams(0, 0, 800, 800, "badak"), GameObjectsOrder++);
+	m_gameObjects.push_back(grass);
+
+
+	SDLGameObject* player = new Player(
 						//xÁÂÇ¥ yÁÂÇ¥ /°¡·Î ¼¼·Î
-		new LoaderParams(500, 100, 128, 82, "player"), GameObjectsOrder++);
-	GameObject* enemy = new Enemy(
-		new LoaderParams(100, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
-	GameObject* enemy2 = new Enemy(
-		new LoaderParams(200, 100, 128, 55, "helicopter2"), GameObjectsOrder++);
-
+		new LoaderParams(400, 400, 128, 82, "player"), GameObjectsOrder++);
 	m_gameObjects.push_back(player);
-	m_gameObjects.push_back(enemy);
-	m_gameObjects.push_back(enemy2);
+
+
+
+
+	
+	
+	
 	std::cout << "entering PlayState\n";
 	return true;
 }

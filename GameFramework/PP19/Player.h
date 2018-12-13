@@ -12,8 +12,10 @@ private:
 public:
 	Player(const LoaderParams* pParams, int n);
 
-
+	
 	virtual void draw();
 	virtual void update();
 	//virtual void clean();
+
+	void CollWall(SDLGameObject * wall);
 };

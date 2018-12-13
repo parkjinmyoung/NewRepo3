@@ -8,7 +8,7 @@ void Player::handleInput()
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_D))
 	{
 		m_velocity.setX(2);
-		m_textureID = "playerright";
+		m_textureID = "playerleft";
 	}
 	if (TheInputHandler::Instance()->isKeyDown(SDL_SCANCODE_A))
 	{
@@ -111,8 +111,73 @@ void Player::update()
 	m_velocity.setX(0);
 	m_velocity.setY(0);
 	handleInput(); // add our function
+
+	
+
 	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
 	SDLGameObject::update();
+	for (std::vector<SDLGameObject*>::size_type i = 0;
+		i != S_Play::Instance()->m_gameObjects.size(); i++)
+	{
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				CollWall(S_Play::Instance()->m_gameObjects[i]);
+			}
+		}
 
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "ENEMY")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				//MY_GAMEMACHINE::Instance()->changeState(
+				//S_Over::Instance());
+
+				S_MANAGER::Instance()->ChangeMap();
+				S_Play::Instance()->m_gameObjects[1]->getPosition().setX(100);
+
+				break;
+			}
+
+		}
+
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "Door")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				S_MANAGER::Instance()->ChangeMap();
+				
+				break;
+			}
+
+		}
+	}
+
+}
+
+
+
+
+void Player::CollWall(SDLGameObject * wall)
+{
+	
+	if ( m_velocity.getX() < 0)
+	{
+		m_position.setX(m_position.getX() + 5);
+	}
+	else if ( m_velocity.getX() > 0)
+	{
+		m_position.setX(m_position.getX() - 5);
+	}
+	
+	if ( m_velocity.getY() > 0)
+	{
+		m_position.setY(m_position.getY() - 5);
+	}
+	else if (m_velocity.getY() < 0 )
+	{
+		m_position.setY(m_position.getY() + 5);
+	}
 
 }
