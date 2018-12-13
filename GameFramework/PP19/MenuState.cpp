@@ -62,7 +62,7 @@ bool MenuState::onExit()
 
 void MenuState::s_menuToPlay()
 {
-	MY_GAMEMACHINE::Instance()->changeState(new EnemyDecorate(new WallDecorate(S_Play::Instance())));
+	S_MANAGER::Instance()->GameStart();
 }
 
 

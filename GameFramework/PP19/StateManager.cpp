@@ -27,11 +27,8 @@ GameState* StateManager::NextMap()
 {
 
 	
-	if (States[Curmap+1] != NULL )
-	{
-		return States[++Curmap];
-	}
-	else
+	
+	
 	{
 		return InstanceMap();
 	}
@@ -59,7 +56,8 @@ GameState* StateManager::InstanceMap()
 
 	if (1)
 	{
-		// ~~~~
+		N_Map = new WallDecorate(S_Play::Instance());
+		
 	}
 	
 		

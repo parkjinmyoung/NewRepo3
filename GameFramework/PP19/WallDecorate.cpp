@@ -34,9 +34,9 @@ bool WallDecorate::onEnter()
 		new LoaderParams(760, 0, 40, 800, "block2"), S_Play::Instance()->GameObjectsOrder++);
 	S_Play::Instance()->m_gameObjects.push_back(wall4);
 
-	SDLGameObject* wall5 = new Wall(
-		new LoaderParams(300, 300, 200, 200, "wall"), S_Play::Instance()->GameObjectsOrder++);
-	S_Play::Instance()->m_gameObjects.push_back(wall5);
+	//SDLGameObject* wall5 = new Wall(
+	//	new LoaderParams(300, 300, 200, 200, "wall"), S_Play::Instance()->GameObjectsOrder++);
+	//S_Play::Instance()->m_gameObjects.push_back(wall5);
 
 
 	return c;
