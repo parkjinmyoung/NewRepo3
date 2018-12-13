@@ -22,7 +22,7 @@ public:
 
 	
 
-	
+	int GameObjectsOrder;
 
 	virtual void update();
 	virtual void render();
