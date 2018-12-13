@@ -131,8 +131,23 @@ void Player::update()
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
-				MY_GAMEMACHINE::Instance()->changeState(
-					S_Over::Instance());
+				//MY_GAMEMACHINE::Instance()->changeState(
+				//S_Over::Instance());
+
+				S_MANAGER::Instance()->ChangeMap();
+				S_Play::Instance()->m_gameObjects[1]->getPosition().setX(100);
+
+				break;
+			}
+
+		}
+
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "Door")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				S_MANAGER::Instance()->ChangeMap();
+				
 				break;
 			}
 

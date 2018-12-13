@@ -27,6 +27,7 @@ void GameStateMachine::changeState(GameState *pState)
 	}
 }
 
+
 void GameStateMachine::update()
 {
 	if (m_currentState != NULL)

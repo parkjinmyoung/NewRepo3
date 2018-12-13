@@ -1,6 +1,8 @@
 #pragma once
 #include "StateDecorate.h"
 
+#include "SDLGameState.h"
+#include "GameState.h"
 
 class EnemyDecorate :public StateDecorate
 {

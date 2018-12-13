@@ -1,7 +1,6 @@
 #pragma once
 #include "SDLGameState.h"
-#include "SDLGameObject.h"
-#include "PlayState.h"
+
 
 class StateDecorate : public SDLGameState
 {

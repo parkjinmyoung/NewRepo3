@@ -1,5 +1,7 @@
 #pragma once
 #include "StateDecorate.h"
+#include "SDLGameState.h"
+#include "GameState.h"
 
 
 class WallDecorate :public StateDecorate

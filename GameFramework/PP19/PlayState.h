@@ -20,7 +20,7 @@ public:
 		return s_pInstance;
 	}
 
-	int GameObjectsOrder = 0;
+	
 
 	
 
