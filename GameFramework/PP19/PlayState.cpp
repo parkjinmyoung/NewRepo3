@@ -115,7 +115,7 @@ bool PlayState::onEnter()
 
 	SDLGameObject* player = new Player(
 						//xÁÂÇ¥ yÁÂÇ¥ /°¡·Î ¼¼·Î
-		new LoaderParams(500, 100, 128, 82, "player"), GameObjectsOrder++);
+		new LoaderParams(400, 400, 128, 82, "player"), GameObjectsOrder++);
 	m_gameObjects.push_back(player);
 
 

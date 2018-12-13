@@ -131,9 +131,9 @@ void Player::update()
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
-				//MY_GAMEMACHINE::Instance()->changeState(
-				//	S_Over::Instance());
-				S_MANAGER::Instance()->ChangeMap();
+				MY_GAMEMACHINE::Instance()->changeState(
+				S_Over::Instance());
+				
 				break;
 			}
 
