@@ -5,9 +5,11 @@
 #include "PauseState.h"
 #include "PlayState.h"
 #include <vector>
-#include "EnemyDecorate.h"
 #include "WallDecorate.h"
+#include "WallDecorate2.h"
+#include "WallDecorate3.h"
 #include "DoorDecorate.h"
+#include "EnemyDecorate.h"
 #include "EnemyDecorate2.h"
 #include "EnemyDecorate3.h"
 

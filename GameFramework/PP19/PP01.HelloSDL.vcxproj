@@ -157,6 +157,8 @@
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WallDecorate.cpp" />
+    <ClCompile Include="WallDecorate2.cpp" />
+    <ClCompile Include="WallDecorate3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedGraphic.h" />
@@ -190,6 +192,8 @@
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Wall.h" />
     <ClInclude Include="WallDecorate.h" />
+    <ClInclude Include="WallDecorate2.h" />
+    <ClInclude Include="WallDecorate3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

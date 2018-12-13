@@ -94,7 +94,28 @@ SDLGameState* StateManager::ChoiceEnemy(SDLGameState* S)
 
 SDLGameState* StateManager::ChoiceWall(SDLGameState* S)
 {
-	return new WallDecorate(S);
+	SDLGameState* temp;
+	int i = 0;
+	i = rand() % 3;
+	if (i == 0)
+	{ 
+		temp = new WallDecorate(S);
+	}
+	else if (i == 1)
+	{
+		temp = new WallDecorate2(S);
+	}
+	else if (i == 2)
+	{
+		temp = new WallDecorate3(S);
+	}
+	else
+	{
+		temp = S;
+	}
+	
+
+	return temp;
 }
 
 SDLGameState* StateManager::Choicedoor(SDLGameState* S)

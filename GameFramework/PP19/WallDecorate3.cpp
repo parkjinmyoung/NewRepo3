@@ -1,23 +1,23 @@
-#include "WallDecorate.h"
+#include "WallDecorate3.h"
 #include "PlayState.h"
 
-WallDecorate::WallDecorate(SDLGameState* state) : StateDecorate(state)
+WallDecorate3::WallDecorate3(SDLGameState* state) : StateDecorate(state)
 {
 	super = state;
-	
+
 }
 
-void WallDecorate::update()
+void WallDecorate3::update()
 {
 	super->update();
 }
 
-void WallDecorate::render()
+void WallDecorate3::render()
 {
 	super->render();
 }
 
-bool WallDecorate::onEnter()
+bool WallDecorate3::onEnter()
 {
 	bool c = super->onEnter();
 
@@ -32,7 +32,7 @@ bool WallDecorate::onEnter()
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("assets/block.png",
+	if (!TheTextureManager::Instance()->load("assets/rock.png",
 		"rock", TheGame::Instance()->getRenderer()))
 	{
 		return false;
@@ -55,15 +55,23 @@ bool WallDecorate::onEnter()
 		new LoaderParams(760, 0, 40, 800, "block2"), S_Play::Instance()->GameObjectsOrder++);
 	S_Play::Instance()->m_gameObjects.push_back(wall4);
 
-	//SDLGameObject* wall5 = new Wall(
-	//	new LoaderParams(300, 300, 200, 200, "wall"), S_Play::Instance()->GameObjectsOrder++);
-	//S_Play::Instance()->m_gameObjects.push_back(wall5);
-
+	SDLGameObject* rock1 = new Wall(
+		new LoaderParams(100, 100, 100, 100, "rock2"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(rock1);
+	SDLGameObject* rock2 = new Wall(
+		new LoaderParams(600, 100, 100, 100, "rock2"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(rock2);
+	SDLGameObject* rock3 = new Wall(
+		new LoaderParams(100, 600, 100, 100, "rock2"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(rock3);
+	SDLGameObject* rock4 = new Wall(
+		new LoaderParams(600, 600, 100, 100, "rock2"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(rock4);
 
 	return c;
 }
 
-bool WallDecorate::onExit()
+bool WallDecorate3::onExit()
 {
 	return super->onExit();
 }
