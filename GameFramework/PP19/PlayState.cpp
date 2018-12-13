@@ -37,15 +37,7 @@ void PlayState::render()
 bool PlayState::onEnter()
 {
 	GameObjectsOrder = 0;
-	if (!TheTextureManager::Instance()->load("assets/helicopter.png",
-		"helicopter", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/helicopter2.png",
-		"helicopter2", TheGame::Instance()->getRenderer())) {
-		return false;
-	}
-	
+
 	if (!TheTextureManager::Instance()->load("assets/front.png",
 		"player", TheGame::Instance()->getRenderer()))
 	{
@@ -71,36 +63,13 @@ bool PlayState::onEnter()
 	{
 		return false;
 	}
+
 	if (!TheTextureManager::Instance()->load("assets/bullet3.png",
 		"bullet", TheGame::Instance()->getRenderer()))
 	{
 		return false;
 	}
-	if (!TheTextureManager::Instance()->load("assets/bullet3.png",
-		"bullet", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/a.png",
-		"wall", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/grass.jpg",
-		"grass", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/block.png",
-		"block", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
-	if (!TheTextureManager::Instance()->load("assets/block2.png",
-		"block2", TheGame::Instance()->getRenderer()))
-	{
-		return false;
-	}
+
 	if (!TheTextureManager::Instance()->load("assets/badak.png",
 		"badak", TheGame::Instance()->getRenderer()))
 	{
@@ -115,7 +84,7 @@ bool PlayState::onEnter()
 
 	SDLGameObject* player = new Player(
 						//xÁÂÇ¥ yÁÂÇ¥ /°¡·Î ¼¼·Î
-		new LoaderParams(400, 400, 128, 82, "player"), GameObjectsOrder++);
+		new LoaderParams(336, 359 , 128, 82, "player"), GameObjectsOrder++);
 	m_gameObjects.push_back(player);
 
 

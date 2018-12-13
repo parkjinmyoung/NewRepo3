@@ -99,6 +99,9 @@
     <ClCompile Include="DoorDecorate.cpp">
       <Filter>소스 파일\gamestate</Filter>
     </ClCompile>
+    <ClCompile Include="Door.cpp">
+      <Filter>소스 파일\gameobject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="DoorDecorate.h">
       <Filter>헤더 파일\gamestate</Filter>
+    </ClInclude>
+    <ClInclude Include="Door.h">
+      <Filter>헤더 파일\gameobject</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

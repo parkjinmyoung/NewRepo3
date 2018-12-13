@@ -21,6 +21,21 @@ bool WallDecorate::onEnter()
 {
 	bool c = super->onEnter();
 
+	if (!TheTextureManager::Instance()->load("assets/a.png",
+		"wall", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/block.png",
+		"block", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
+	if (!TheTextureManager::Instance()->load("assets/block2.png",
+		"block2", TheGame::Instance()->getRenderer()))
+	{
+		return false;
+	}
 	SDLGameObject* wall = new Wall(
 		new LoaderParams(0, 0, 800, 40, "block"), S_Play::Instance()->GameObjectsOrder++);
 	S_Play::Instance()->m_gameObjects.push_back(wall);

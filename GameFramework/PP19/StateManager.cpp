@@ -12,11 +12,11 @@ void StateManager::Run()
 
 void StateManager::GameStart()
 {
-	GameState* temp = new EnemyDecorate(new WallDecorate(S_Play::Instance()));
+	GameState* temp = new DoorDecorate( new EnemyDecorate(new WallDecorate(S_Play::Instance())));
 	States.push_back(temp);
 	Curmap++;
 	MY_GAMEMACHINE::Instance()->changeState(temp);
-	
+	cout << Curmap << endl;
 }
 void StateManager::ChangeMap()
 {
@@ -56,7 +56,7 @@ GameState* StateManager::InstanceMap()
 
 	if (1)
 	{
-		N_Map = new WallDecorate(S_Play::Instance());
+		N_Map = new DoorDecorate( new WallDecorate(S_Play::Instance()));
 		
 	}
 	

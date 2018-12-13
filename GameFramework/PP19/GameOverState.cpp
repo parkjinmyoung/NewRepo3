@@ -12,8 +12,7 @@ void GameOverState::s_gameOverToMain()
 }
 void GameOverState::s_restartPlay()
 {
-	MY_GAMEMACHINE::Instance()->changeState(
-		S_Play::Instance());
+	S_MANAGER::Instance()->GameStart();
 }
 
 bool GameOverState::onEnter()

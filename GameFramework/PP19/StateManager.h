@@ -7,6 +7,7 @@
 #include <vector>
 #include "EnemyDecorate.h"
 #include "WallDecorate.h"
+#include "DoorDecorate.h"
 
 class StateManager
 {

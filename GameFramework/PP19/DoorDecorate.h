@@ -1,6 +1,6 @@
 #pragma once
 #include "StateDecorate.h"
-
+#include "Door.h"
 
 class DoorDecorate :public StateDecorate
 {

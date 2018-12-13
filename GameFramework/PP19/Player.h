@@ -18,4 +18,5 @@ public:
 	//virtual void clean();
 
 	void CollWall(SDLGameObject * wall);
+	void D_setpos();
 };

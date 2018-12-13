@@ -38,8 +38,7 @@ void Player::handleInput()
 				>= abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
 
-				cout << S_Play::Instance()->m_gameObjects.size() << endl;
-
+				
 				S_Play::Instance()->m_gameObjects.push_back
 				(new Newbullet(new LoaderParams(m_position.getX() + 60, m_position.getY(), 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, 5, 0));
 
@@ -51,7 +50,7 @@ void Player::handleInput()
 				abs(m_position.getX() - TheInputHandler::Instance()->getMousePosition()->getX())
 				>= abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
-				cout << S_Play::Instance()->m_gameObjects.size() << endl;
+				
 
 				S_Play::Instance()->m_gameObjects.push_back
 				(new Newbullet(new LoaderParams(m_position.getX() + 20, m_position.getY(), 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, -5, 0));
@@ -66,7 +65,7 @@ void Player::handleInput()
 				< abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
 
-				cout << S_Play::Instance()->m_gameObjects.size() << endl;
+				
 
 				S_Play::Instance()->m_gameObjects.push_back
 				(new Newbullet(new LoaderParams(m_position.getX() + 40, m_position.getY() - 30, 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, 0, -5));
@@ -79,7 +78,7 @@ void Player::handleInput()
 				abs(m_position.getX() - TheInputHandler::Instance()->getMousePosition()->getX())
 				< abs(m_position.getY() - TheInputHandler::Instance()->getMousePosition()->getY()))
 			{
-				cout << S_Play::Instance()->m_gameObjects.size() << endl;
+				
 
 				S_Play::Instance()->m_gameObjects.push_back
 				(new Newbullet(new LoaderParams(m_position.getX() + 40, m_position.getY() + 30, 64, 64, "bullet"), S_Play::Instance()->GameObjectsOrder++, 0, 5));
@@ -119,7 +118,17 @@ void Player::update()
 	for (std::vector<SDLGameObject*>::size_type i = 0;
 		i != S_Play::Instance()->m_gameObjects.size(); i++)
 	{
-		if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
+		if (S_Play::Instance()->m_gameObjects[i]->Tag == "DOOR")
+		{
+			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
+			{
+				D_setpos();
+
+				break;
+			}
+
+		}
+		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "WALL")
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
@@ -131,27 +140,17 @@ void Player::update()
 		{
 			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
 			{
-				//MY_GAMEMACHINE::Instance()->changeState(
-				//S_Over::Instance());
+				MY_GAMEMACHINE::Instance()->changeState(
+				S_Over::Instance());
 
-				S_MANAGER::Instance()->ChangeMap();
-				S_Play::Instance()->m_gameObjects[1]->getPosition().setX(100);
+			
 
 				break;
 			}
 
 		}
 
-		else if (S_Play::Instance()->m_gameObjects[i]->Tag == "Door")
-		{
-			if (checkCollision(S_Play::Instance()->m_gameObjects[i]))
-			{
-				S_MANAGER::Instance()->ChangeMap();
-				
-				break;
-			}
-
-		}
+	
 	}
 
 }
@@ -180,4 +179,34 @@ void Player::CollWall(SDLGameObject * wall)
 		m_position.setY(m_position.getY() + 5);
 	}
 
+}
+
+
+void Player::D_setpos()
+{
+	if (m_position.getX() < 100)
+	{
+		S_MANAGER::Instance()->ChangeMap();
+
+		S_Play::Instance()->m_gameObjects[1]->getPosition().setX(700 - S_Play::Instance()->m_gameObjects[1]->getWidth());
+	}
+	else if (m_position.getX() + m_width > 700)
+	{
+		S_MANAGER::Instance()->ChangeMap();
+
+		S_Play::Instance()->m_gameObjects[1]->getPosition().setX(100);
+	}
+	else if (m_position.getY() < 100)
+	{
+		S_MANAGER::Instance()->ChangeMap();
+
+		S_Play::Instance()->m_gameObjects[1]->getPosition().setY(700 - S_Play::Instance()->m_gameObjects[1]->getHeight());
+	}
+	else
+	{
+		S_MANAGER::Instance()->ChangeMap();
+
+		S_Play::Instance()->m_gameObjects[1]->getPosition().setY(100);
+	}
+	
 }
