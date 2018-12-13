@@ -12,7 +12,7 @@ void Enemy2::draw()
 }
 void Enemy2::update()
 {
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 5 /*m_numFrames*/));
+	m_currentFrame = int(((SDL_GetTicks() / 100) % 2 /*m_numFrames*/));
 	gotoplayer();
 
 

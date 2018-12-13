@@ -12,7 +12,7 @@ void StateManager::Run()
 
 void StateManager::GameStart()
 {
-	GameState* temp = new DoorDecorate( new EnemyDecorate(new WallDecorate(S_Play::Instance())));
+	GameState* temp = new DoorDecorate(new WallDecorate(S_Play::Instance()));
 	States.push_back(temp);
 	Curmap++;
 	MY_GAMEMACHINE::Instance()->changeState(temp);
@@ -56,7 +56,7 @@ GameState* StateManager::InstanceMap()
 
 	if (1)
 	{
-		N_Map = new DoorDecorate( new WallDecorate(S_Play::Instance()));
+		N_Map = Choicedoor(ChoiceEnemy(ChoiceWall(S_Play::Instance())));
 		
 	}
 	
@@ -64,4 +64,40 @@ GameState* StateManager::InstanceMap()
 		
 	States.push_back(N_Map);
 	return N_Map;
+}
+
+SDLGameState* StateManager::ChoiceEnemy(SDLGameState* S)
+{
+	SDLGameState* temp;
+	int i = 0;
+	i = rand() % 4;
+	if (i == 0)
+	{
+		temp = new EnemyDecorate(S);
+	}
+	else if (i == 1)
+	{
+		temp = new EnemyDecorate2(S);
+	}
+	else if (i == 2)
+	{
+		temp = new EnemyDecorate3(S);
+	}
+	else
+	{
+		temp = S;
+	}
+
+		
+	return temp;
+}
+
+SDLGameState* StateManager::ChoiceWall(SDLGameState* S)
+{
+	return new WallDecorate(S);
+}
+
+SDLGameState* StateManager::Choicedoor(SDLGameState* S)
+{
+	return new DoorDecorate(S);
 }

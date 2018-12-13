@@ -102,6 +102,12 @@
     <ClCompile Include="Door.cpp">
       <Filter>소스 파일\gameobject</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyDecorate2.cpp">
+      <Filter>소스 파일\gamestate</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyDecorate3.cpp">
+      <Filter>소스 파일\gamestate</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -182,14 +188,20 @@
     <ClInclude Include="WallDecorate.h">
       <Filter>헤더 파일\gamestate</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyDecorate.h">
-      <Filter>헤더 파일\gameobject</Filter>
-    </ClInclude>
     <ClInclude Include="DoorDecorate.h">
       <Filter>헤더 파일\gamestate</Filter>
     </ClInclude>
     <ClInclude Include="Door.h">
       <Filter>헤더 파일\gameobject</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDecorate2.h">
+      <Filter>헤더 파일\gamestate</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDecorate.h">
+      <Filter>헤더 파일\gamestate</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDecorate3.h">
+      <Filter>헤더 파일\gamestate</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

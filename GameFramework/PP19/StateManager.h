@@ -8,6 +8,8 @@
 #include "EnemyDecorate.h"
 #include "WallDecorate.h"
 #include "DoorDecorate.h"
+#include "EnemyDecorate2.h"
+#include "EnemyDecorate3.h"
 
 class StateManager
 {
@@ -30,6 +32,9 @@ public:
 	void Run();
 	void GameStart();
 	void ChangeMap();
+	SDLGameState* ChoiceEnemy(SDLGameState* S);
+	SDLGameState* ChoiceWall(SDLGameState* S);
+	SDLGameState* Choicedoor(SDLGameState* S);
 	GameState* NextMap();
 	//GameState* PreviousMap();
 private:

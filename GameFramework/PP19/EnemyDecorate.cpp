@@ -28,13 +28,26 @@ bool EnemyDecorate::onEnter()
 		"helicopter2", TheGame::Instance()->getRenderer())) {
 		return false;
 	}
+	if (!TheTextureManager::Instance()->load("assets/ghost.png",
+		"ghost", TheGame::Instance()->getRenderer())) {
+		return false;
+	}
 
 
 	
 
+	SDLGameObject* enemy1 = new Enemy2(
+		new LoaderParams(100, 100, 128, 82, "ghost"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(enemy1);
 	SDLGameObject* enemy2 = new Enemy2(
-		new LoaderParams(200, 100, 128, 55, "helicopter2"), S_Play::Instance()->GameObjectsOrder++);
+		new LoaderParams(100, 572, 128, 82, "ghost"), S_Play::Instance()->GameObjectsOrder++);
 	S_Play::Instance()->m_gameObjects.push_back(enemy2);
+	SDLGameObject* enemy3 = new Enemy2(
+		new LoaderParams(618, 100, 128, 82, "ghost"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(enemy3);
+	SDLGameObject* enemy4 = new Enemy2(
+		new LoaderParams(618, 572, 128, 82, "ghost"), S_Play::Instance()->GameObjectsOrder++);
+	S_Play::Instance()->m_gameObjects.push_back(enemy4);
 
 
 	return c;

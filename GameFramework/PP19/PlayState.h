@@ -1,10 +1,12 @@
 #pragma once
 #include "GameState.h"
+#include "SDLGameState.h"
 #include "Game.h"
 #include "GameOverState.h"
 #include "Wall.h"
 #include "background.h"
 #include "Enemy2.h"
+
 
 class PlayState : public SDLGameState
 {
