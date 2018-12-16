@@ -1,23 +1,27 @@
 #pragma once
 #include "GameObject.h"
-
 #include "Vector2D.h"
-
-
 
 class SDLGameObject : public GameObject
 {
 public:
+	SDLGameObject(const LoaderParams* pParams);
 	SDLGameObject(const LoaderParams* pParams, int n);
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
-	virtual float getX() { return m_position.getX();}
-	virtual float getY() { return m_position.getY();}
-	virtual void GameObjectDelete() ;
+
+	bool checkCollision(SDLGameObject* wall);
+
+	Vector2D& getPosition() { return m_position; }
+	int getWidth() { return m_width; }
+	int getHeight() { return m_height; }
+
+	virtual void GameObjectDelete();
 	string Tag = "";
+
 protected:
-	
+
 	int Order;
 
 	Vector2D m_position;

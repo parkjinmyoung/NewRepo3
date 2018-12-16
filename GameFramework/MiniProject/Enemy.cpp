@@ -1,39 +1,37 @@
 #include "Enemy.h"
-#include "Game.h"
+#include "InputHandler.h"
 
-Enemy::Enemy(const LoaderParams* pParams , int n) : SDLGameObject(pParams, n)
+Enemy::Enemy(const LoaderParams* pParams, int n) : SDLGameObject(pParams , n)
 {
-	Tag = "GHOST";
+	
+	Tag = "ENEMY";
 }
 void Enemy::draw()
 {
-	SDLGameObject::draw(); 
+	SDLGameObject::draw();
 }
 void Enemy::update()
 {
-	collplayer(TheGame::Instance()->m_gameObjects[0]);
+	m_currentFrame = int(((SDL_GetTicks() / 100) % 2 /*m_numFrames*/));
 
-	m_position.setY(m_position.getY() + speed);
-	if (m_position.getY() <= 0 || m_position.getY() + 82 >= 480 )
+	if (SDL_GetTicks() > waitshoot)
 	{
-		speed *= -1;
+		
+
+			S_Play::Instance()->m_gameObjects.push_back
+			(new Enemy2(new LoaderParams(m_position.getX(), m_position.getY(), 128, 82, "ghost"), S_Play::Instance()->GameObjectsOrder++));
+
+
+			waitshoot = SDL_GetTicks() + 1800.0f;
 	}
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 2));
+
+		SDLGameObject::update();
 }
+
+	
+
 
 void Enemy::clean()
 {
-	Tag = "";
 	GameObjectDelete();
-}
-
-void Enemy::collplayer(SDLGameObject* player)
-{
-	if ((int)this->getX() + 40 > (int)player->getX() &&
-		(int)this->getX() < (int)player->getX() + 40 &&
-		(int)this->getY() + 41 > (int)player->getY() &&
-		(int)this->getY() < (int)player->getY() + 41)
-	{
-		player->clean();
-	}
 }

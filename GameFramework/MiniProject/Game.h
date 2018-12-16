@@ -1,19 +1,23 @@
 #pragma once
+
+#include <iostream>
 #include "SDL.h"
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "Player.h"
+#include "Enemy.h"
 #include <vector>
 #include "InputHandler.h"
-#include "Newbullet.h"
-#include "Wall.h"
-#include "Nullobject.h"
-#include "Enemy.h"
-#include "EnemyCtrl.h"
+#include "GameStateMachine.h"
+#include "MenuState.h"
+#include "GameState.h"
+#include "PlayState.h"
+#include "StateManager.h"
+
 class Game
 {
 public:
-	
+
 	static Game* Instance()
 	{
 		if (s_pInstance == 0)
@@ -32,31 +36,24 @@ public:
 	void handleEvents();
 	void clean();
 	void quit();
+	bool running() { return m_bRunning; }
 
-	std::vector<SDLGameObject*> m_gameObjects;
-
-	std::vector<SDLGameObject*> m_WallObjects;
-	int GameObjectsOrder = 0;
+	int m_currentFrame;
 
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
-	SDL_Window* getWinodw() const { return m_pWindow; }
 
-
-	bool m_bRunning;
-
-	
-	bool running() { return m_bRunning; }
 
 private:
 	static Game* s_pInstance;
 
-	
 
+	Game() {}
+	
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
+	bool m_bRunning;
 
 	
-
 
 };
 

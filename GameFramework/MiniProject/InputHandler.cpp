@@ -46,7 +46,7 @@ void InputHandler::Update()
 			break;
 		}
 	}
-		
+
 }
 void InputHandler::onMouseMove(SDL_Event event)
 {
@@ -86,8 +86,26 @@ void InputHandler::onMouseButtonUp(SDL_Event event)
 	}
 }
 
+void InputHandler::reset()
+{
+	
+	m_mouseButtonStates[LEFT] = false;
+	m_mouseButtonStates[MIDDLE] = false;
+	m_mouseButtonStates[RIGHT] = false;
+	
+}
 
-		
+void InputHandler::onKeyDown()
+{
+	m_keystates = SDL_GetKeyboardState(0);
+}
+
+void InputHandler::onKeyUp()
+{
+	m_keystates = SDL_GetKeyboardState(0);
+}
+
+
 
 
 bool InputHandler::getMouseButtonState(int buttonNumber)
@@ -102,16 +120,6 @@ Vector2D*  InputHandler::getMousePosition()
 	return m_mousePosition;
 }
 
-
-void InputHandler::onKeyDown()
-{
-	m_keystates = SDL_GetKeyboardState(0);
-}
-
-void InputHandler::onKeyUp()
-{
-	m_keystates = SDL_GetKeyboardState(0);
-}
 
 void InputHandler::clean()
 {
@@ -136,5 +144,3 @@ bool InputHandler::isKeyDown(SDL_Scancode key)
 	}
 	return false;
 }
-
-

@@ -1,8 +1,7 @@
 #include "TextureManager.h"
 
 
-TextureManager* TextureManager::s_pInstance = 0;
-
+TextureManager* TextureManager::s_pInstance = NULL;
 
 
 bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
@@ -14,7 +13,7 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
 	}
 	SDL_Texture* pTexture =
 		SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
-	SDL_FreeSurface(pTempSurface);
+//	SDL_FreeSurface(pTempSurface);
 
 	if (pTexture != 0)
 	{
@@ -25,9 +24,7 @@ bool TextureManager::load(string fileName, string id, SDL_Renderer* pRenderer)
 
 }
 
-void TextureManager::draw(string id,
-					int x, int y, int width, int height,
-					SDL_Renderer* pRenderer, SDL_RendererFlip flip)
+void TextureManager::draw(string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
@@ -59,4 +56,9 @@ void TextureManager::drawFrame(std::string id, int x, int y,
 
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect,
 		&destRect, 0, 0, flip);
+}
+
+void TextureManager::clearFromTextureMap(std::string id)
+{
+	m_textureMap.erase(id);
 }

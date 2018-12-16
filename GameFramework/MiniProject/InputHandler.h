@@ -29,23 +29,27 @@ public:
 	}
 
 	void Update();
-	void clean();	
+	void clean();
 	bool isKeyDown(SDL_Scancode key);
-//	bool isKeyUp(SDL_Scancode key);
+
 	bool getMouseButtonState(int buttonNumber);
 	Vector2D* getMousePosition();
 
-
+	void reset();
 
 private:
 	InputHandler();
 	~InputHandler() {}
 	static InputHandler* s_pInstance;
+
 	void onMouseMove(SDL_Event event);
 	void onMouseButtonDown(SDL_Event event);
 	void onMouseButtonUp(SDL_Event event);
 	void onKeyDown();
 	void onKeyUp();
+
+	
+
 };
 
 typedef InputHandler TheInputHandler;
