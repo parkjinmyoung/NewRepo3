@@ -40,16 +40,10 @@ public:
 
 	int m_currentFrame;
 
-	//std::vector<GameObject*> m_gameObjects;
-
 	SDL_Renderer* getRenderer() const { return m_pRenderer; }
 
 
 private:
-
-	
-
-
 	static Game* s_pInstance;
 
 
